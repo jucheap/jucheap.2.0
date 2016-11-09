@@ -12,11 +12,7 @@
 
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using JuCheap.Core;
 using JuCheap.Data.Config;
-using JuCheap.Entity;
-using JuCheap.Entity.Base;
 
 namespace JuCheap.Data
 {
