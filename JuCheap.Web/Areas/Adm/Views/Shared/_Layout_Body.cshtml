@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="author" content="dj.wong" />
+    <meta name="keywords" content="JuCheap后台管理模板,C# MVC Bootstrap 后台管理模板" />
+    <meta name="description" content="JuCheap后台管理模板,采用MVC+EF+Bootstrap构建了一套自适应的通用后台管理模板;JuCheap后台管理模板,已经实现了用户管理,菜单管理,权限管理和日志管理功能.JuCheap后台管理模板使用的技术包括:C#,MVC,EF,Jquery,Bootstrap,jqGrid,DDD,AutoMapper等.JuCheap使用到的技术完全开源,适合快速的搭建后台管理框架,支持自定义扩展." />
+
+    <title>@ViewBag.Title - JuCheap后台管理模板</title>
+
+    @RenderSection("StylesBefore", false)
+    
+    <!--common style-->
+    @Styles.Render("~/Template/Admin/jucheap/Css/BaseStyles")
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .row{margin: 0;}
+    </style>
+
+    @RenderSection("StylesAfter", false)
+    @Html.Partial("BaiduTongji")
+</head>
+<body style="background-color: inherit;">
+
+    @RenderBody()
+
+    @Scripts.Render("~/JS/Admin/jucheap/BaseScripts")
+    @Scripts.Render("~/JS/Admin/jucheap/JuCheap")
+
+    @RenderSection("Scripts", false)
+</body>
+</html>

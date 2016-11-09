@@ -1,0 +1,456 @@
+﻿<#@ template  language="C#"    debug="true" hostspecific="True"#> 
+<#@ include file="$(SolutionDir)JuCheap.Service\MultipleOutputHelper.ttinclude" #>
+<#@ import namespace="System"#>
+
+<#
+    string solutionsPath = Host.ResolveAssemblyReference("$(SolutionDir)");
+    var files = System.IO.Directory.GetFiles(solutionsPath + @"\JuCheap.Entity", "*.cs");
+
+    var manager = Manager.Create(Host, GenerationEnvironment);
+
+	//1.开始输出接口契约文件
+    foreach (var filePath in files)
+    {
+		var file = new FileInfo(filePath);
+		var name = file.Name.Replace("Entity.cs",string.Empty);
+		var lowerName =name.ToLower();
+        //定义输出文件
+        manager.StartNewFile("I"+name+"Service.Partial.cs", string.Empty);
+#>
+
+/*******************************************************************************
+* Copyright (C)  JuCheap.Com
+* 
+* Author: dj.wong
+* Create Date: <#=DateTime.Now#>
+* Description: Automated building by service@JuCheap.com 
+* 
+* Revision History:
+* Date         Author               Description
+*
+*********************************************************************************/
+
+using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using JuCheap.Service.Dto;
+
+namespace JuCheap.Service.Abstracts
+{ 
+	/// <summary>
+    /// <#=name#>业务契约
+    /// </summary>
+    public partial interface I<#=name#>Service
+    {
+		/// <summary>
+		/// 添加<#=lowerName#>
+		/// </summary>
+		/// <param name="<#=lowerName#>"><#=lowerName#>实体</param>
+		/// <returns></returns>
+		bool Add(<#=name#>Dto <#=lowerName#>);
+
+		/// <summary>
+        /// 批量添加<#=lowerName#>
+        /// </summary>
+        /// <param name="models"><#=lowerName#>集合</param>
+        /// <returns></returns>
+        bool Add(List<<#=name#>Dto> models);
+
+		/// <summary>
+		/// 编辑<#=lowerName#>
+		/// </summary>
+		/// <param name="<#=lowerName#>">实体</param>
+		/// <returns></returns>
+		bool Update(<#=name#>Dto <#=lowerName#>);
+
+		/// <summary>
+		/// 批量更新<#=lowerName#>
+		/// </summary>
+		/// <param name="<#=lowerName#>s"><#=lowerName#>实体集合</param>
+		/// <returns></returns>
+		bool Update(IEnumerable<<#=name#>Dto> <#=lowerName#>s);
+
+		/// <summary>
+		/// 删除<#=lowerName#>
+		/// </summary>
+		/// <param name="id">Id</param>
+		/// <returns></returns>
+		bool Delete(int id);
+
+		/// <summary>
+        /// 批量删除<#=lowerName#>
+        /// </summary>
+        /// <param name="exp">条件表达式</param>
+        /// <returns></returns>
+        bool Delete(Expression<Func<<#=name#>Dto, bool>> exp);
+
+		/// <summary>
+        ///  获取单条符合条件的 <#=lowerName#> 数据
+        /// </summary>
+        /// <param name="exp">条件表达式</param>
+        /// <returns></returns>
+        <#=name#>Dto GetOne(Expression<Func<<#=name#>Dto, bool>> exp);
+
+		/// <summary>
+        /// 查询符合调价的 <#=lowerName#>
+        /// </summary>
+		/// <param name="exp">过滤条件</param>
+		/// <param name="orderExp">排序条件</param>
+		/// <param name="isDesc">是否是降序排列</param>
+        /// <returns></returns>
+        List<<#=name#>Dto> Query<OrderKeyType>(Expression<Func<<#=name#>Dto, bool>> exp, Expression<Func<<#=name#>Dto, OrderKeyType>> orderExp, bool isDesc = true);
+
+		/// <summary>
+        /// 分页获取<#=lowerName#>
+        /// </summary>
+        /// <param name="queryBase">QueryBase</param>
+		/// <param name="exp">过滤条件</param>
+		/// <param name="orderExp">排序条件</param>
+		/// <param name="isDesc">是否是降序排列</param>
+        /// <returns></returns>
+        ResultDto<<#=name#>Dto> GetWithPages<OrderKeyType>(QueryBase queryBase, Expression<Func<<#=name#>Dto, bool>> exp, Expression<Func<<#=name#>Dto, OrderKeyType>> orderExp, bool isDesc = true);
+
+        /// <summary>
+        /// 分页获取<#=lowerName#>
+        /// </summary>
+        /// <param name="queryBase">QueryBase</param>
+		/// <param name="exp">过滤条件</param>
+		/// <param name="orderBy">排序条件</param>
+		/// <param name="orderDir">是否是降序排列</param>
+        /// <returns></returns>
+        ResultDto<<#=name#>Dto> GetWithPages(QueryBase queryBase, Expression<Func<<#=name#>Dto, bool>> exp, string orderBy, string orderDir = "desc");
+    } 
+}
+<# 
+    // 结束输出文件
+    manager.EndBlock();
+} 
+	//2.开始生成契约实现文件
+	foreach (var filePath in files)
+    {
+		var file = new FileInfo(filePath);
+		var name = file.Name.Replace("Entity.cs",string.Empty);
+		var lowerName = name.ToLower();
+        //定义输出文件
+        manager.StartNewFile(name+"Service.Partial.cs", string.Empty);
+#>
+
+/*******************************************************************************
+* Copyright (C)  JuCheap.Com
+* 
+* Author: dj.wong
+* Create Date: <#=DateTime.Now#>
+* Description: Automated building by service@JuCheap.com 
+* 
+* Revision History:
+* Date         Author               Description
+*
+*********************************************************************************/
+
+using System;
+using System.Collections.Generic;
+using System.Data.Entity.Migrations;
+using System.Linq;
+using System.Linq.Expressions;
+using EntityFramework.Extensions;
+using AutoMapper;
+using JuCheap.Core;
+using JuCheap.Core.Extentions;
+using JuCheap.Entity;
+using JuCheap.Service.Dto;
+using Mehdime.Entity;
+
+namespace JuCheap.Service.Abstracts
+{ 
+	/// <summary>
+    /// <#=name#>业务契约
+    /// </summary>
+    public partial class <#=name#>Service : ServiceBase<<#=name#>Entity>, IDependency, I<#=name#>Service
+    {
+		#region 构造函数注册上下文
+		public IDbContextScopeFactory _dbScopeFactory {get;set;}
+
+        //private readonly IDbContextScopeFactory _dbScopeFactory;
+
+        //public <#=name#>Service(IDbContextScopeFactory dbScopeFactory)
+        //{
+        //    _dbScopeFactory = dbScopeFactory;
+        //}
+
+        #endregion
+
+		#region I<#=name#>Service 接口实现
+
+		/// <summary>
+		/// 添加<#=lowerName#>
+		/// </summary>
+		/// <param name="dto"><#=lowerName#>实体</param>
+		/// <returns></returns>
+		public bool Add(<#=name#>Dto dto)
+		{
+			using (var scope = _dbScopeFactory.Create())
+            {
+                var db = GetDb(scope);
+                var dbSet = GetDbSet(db);
+				var entity = Mapper.Map<<#=name#>Dto, <#=name#>Entity>(dto);
+                dbSet.Add(entity);
+                var count = db.SaveChanges();
+                return count > 0;
+            }
+		}
+
+		/// <summary>
+        /// 批量添加<#=lowerName#>
+        /// </summary>
+        /// <param name="dtos"><#=lowerName#>集合</param>
+        /// <returns></returns>
+        public bool Add(List<<#=name#>Dto> dtos)
+		{
+			using (var scope = _dbScopeFactory.Create())
+            {
+                var db = GetDb(scope);
+                var dbSet = GetDbSet(db);
+				var entities = Mapper.Map<List<<#=name#>Dto>, List<<#=name#>Entity>>(dtos);
+                dbSet.AddRange(entities);
+                return db.SaveChanges() > 0;
+            }
+		}
+
+		/// <summary>
+		/// 编辑<#=lowerName#>
+		/// </summary>
+		/// <param name="dto">实体</param>
+		/// <returns></returns>
+		public bool Update(<#=name#>Dto dto)
+		{
+			using (var scope = _dbScopeFactory.Create())
+            {
+                var db = GetDb(scope);
+                var dbSet = GetDbSet(db);
+				var entity = Mapper.Map<<#=name#>Dto, <#=name#>Entity>(dto);
+                dbSet.AddOrUpdate(entity);
+                return db.SaveChanges() > 0;
+            }
+		}
+
+		/// <summary>
+		/// 批量更新<#=lowerName#>
+		/// </summary>
+		/// <param name="dtos"><#=lowerName#>实体集合</param>
+		/// <returns></returns>
+		public bool Update(IEnumerable<<#=name#>Dto> dtos)
+		{
+			using (var scope = _dbScopeFactory.Create())
+            {
+                var db = GetDb(scope);
+                var dbSet = GetDbSet(db);
+				var entities = Mapper.Map<IEnumerable<<#=name#>Dto>, IEnumerable<<#=name#>Entity>>(dtos);
+                dbSet.AddOrUpdate(entities.ToArray());
+                return db.SaveChanges() > 0;
+            }
+		}
+
+		/// <summary>
+		/// 删除<#=lowerName#>
+		/// </summary>
+		/// <param name="id">Id</param>
+		/// <returns></returns>
+		public bool Delete(int id)
+		{
+			using (var scope = _dbScopeFactory.Create())
+            {
+                var db = GetDb(scope);
+                var dbSet = GetDbSet(db);
+
+                var model = dbSet.FirstOrDefault(item => item.Id == id);
+                dbSet.Remove(model);
+                return db.SaveChanges() > 0;
+            }
+		}
+
+		/// <summary>
+        /// 批量删除<#=lowerName#>
+        /// </summary>
+        /// <param name="exp">条件表达式</param>
+        /// <returns></returns>
+        public bool Delete(Expression<Func<<#=name#>Dto, bool>> exp)
+		{
+			using (var scope = _dbScopeFactory.Create())
+            {
+                var db = GetDb(scope);
+                var dbSet = GetDbSet(db);
+				var where = exp.Cast<<#=name#>Dto, <#=name#>Entity, bool>();
+				
+                var models = dbSet.Where(where);
+                dbSet.RemoveRange(models);
+                return db.SaveChanges() > 0;
+            }
+		}
+
+		/// <summary>
+        ///  获取单条符合条件的 <#=lowerName#> 数据
+        /// </summary>
+        /// <param name="exp">条件表达式</param>
+        /// <returns></returns>
+        public <#=name#>Dto GetOne(Expression<Func<<#=name#>Dto, bool>> exp)
+		{
+			using (var scope = _dbScopeFactory.CreateReadOnly())
+            {
+                var db = GetDb(scope);
+                var dbSet = GetDbSet(db);
+				var where = exp.Cast<<#=name#>Dto, <#=name#>Entity, bool>();
+                var entity = dbSet.AsNoTracking().FirstOrDefault(where);
+
+				return Mapper.Map<<#=name#>Entity, <#=name#>Dto>(entity);
+            }
+		}
+
+		/// <summary>
+        /// 查询符合调价的 <#=lowerName#>
+        /// </summary>
+		/// <param name="exp">过滤条件</param>
+		/// <param name="orderExp">排序条件</param>
+		/// <param name="isDesc">是否是降序排列</param>
+        /// <returns></returns>
+        public List<<#=name#>Dto> Query<OrderKeyType>(Expression<Func<<#=name#>Dto, bool>> exp, Expression<Func<<#=name#>Dto, OrderKeyType>> orderExp, bool isDesc = true)
+		{
+            using (var scope = _dbScopeFactory.CreateReadOnly())
+            {
+                var db = GetDb(scope);
+                var dbSet = GetDbSet(db);
+				var where = exp.Cast<<#=name#>Dto, <#=name#>Entity, bool>();
+				var order = orderExp.Cast<<#=name#>Dto, <#=name#>Entity, OrderKeyType>();
+				var query = GetQuery(dbSet, where, order, isDesc);
+				var list = query.ToList();
+				return Mapper.Map<List<<#=name#>Entity>, List<<#=name#>Dto>>(list);
+            }
+		}
+
+		/// <summary>
+        /// 分页获取<#=name#>
+        /// </summary>
+        /// <param name="queryBase">QueryBase</param>
+		/// <param name="exp">过滤条件</param>
+		/// <param name="orderExp">排序条件</param>
+		/// <param name="isDesc">是否是降序排列</param>
+        /// <returns></returns>
+        public ResultDto<<#=name#>Dto> GetWithPages<OrderKeyType>(QueryBase queryBase, Expression<Func<<#=name#>Dto, bool>> exp, Expression<Func<<#=name#>Dto, OrderKeyType>> orderExp, bool isDesc = true)
+        {
+			using (var scope = _dbScopeFactory.CreateReadOnly())
+            {
+                var db = GetDb(scope);
+                var dbSet = GetDbSet(db);
+				var where = exp.Cast<<#=name#>Dto, <#=name#>Entity, bool>();
+				var order = orderExp.Cast<<#=name#>Dto, <#=name#>Entity, OrderKeyType>();
+				var query = GetQuery(dbSet, where, order, isDesc);
+
+                var query_count = query.FutureCount();
+                var query_list = query.Skip(queryBase.Start).Take(queryBase.Length).Future();
+				var list = query_list.ToList();
+
+                var dto = new ResultDto<<#=name#>Dto>
+				{
+					recordsTotal = query_count.Value,
+					data = Mapper.Map<List<<#=name#>Entity>, List<<#=name#>Dto>>(list)
+                };
+				return dto;
+            }
+        }
+
+		/// <summary>
+        /// 分页获取<#=name#>
+        /// </summary>
+        /// <param name="queryBase">QueryBase</param>
+		/// <param name="exp">过滤条件</param>
+		/// <param name="orderBy">排序条件</param>
+		/// <param name="orderDir">排序类型：desc(默认)/asc</param>
+        /// <returns></returns>
+        public ResultDto<<#=name#>Dto> GetWithPages(QueryBase queryBase, Expression<Func<<#=name#>Dto, bool>> exp, string orderBy, string orderDir = "desc")
+        {
+			using (var scope = _dbScopeFactory.CreateReadOnly())
+            {
+                var db = GetDb(scope);
+                var dbSet = GetDbSet(db);
+				var where = exp.Cast<<#=name#>Dto, <#=name#>Entity, bool>();
+				//var order = orderExp.Cast<<#=name#>Dto, <#=name#>Entity, OrderKeyType>();
+				var query = GetQuery(dbSet, where, orderBy, orderDir);
+
+                var query_count = query.FutureCount();
+                var query_list = query.Skip(queryBase.Start).Take(queryBase.Length).Future();
+				var list = query_list.ToList();
+
+                var dto = new ResultDto<<#=name#>Dto>
+				{
+					recordsTotal = query_count.Value,
+					data = Mapper.Map<List<<#=name#>Entity>, List<<#=name#>Dto>>(list)
+                };
+				return dto;
+            }
+        }
+
+		#endregion
+    } 
+}
+<# 
+    // 结束输出文件
+    manager.EndBlock();
+}
+#> 
+
+
+<#
+	manager.StartNewFile("AutoMapperConfiguration.Partial.cs", string.Empty);
+#>
+
+
+/*******************************************************************************
+* Copyright (C)  JuCheap.Com
+* 
+* Author: dj.wong
+* Create Date: 2015/8/7 11:12:12
+* Description: Automated building by service@JuCheap.com 
+* 
+* Revision History:
+* Date         Author               Description
+*
+*********************************************************************************/
+
+using AutoMapper;
+using JuCheap.Entity;
+using JuCheap.Service.Dto;
+
+namespace JuCheap.Service
+{
+    /// <summary>
+    /// AutoMapper 配置
+    /// </summary>
+    public partial class AutoMapperConfiguration
+    {
+        /// <summary>
+        /// 配置AutoMapper
+        /// </summary>
+        public static void Config()
+        {
+<#
+	//1.开始输出接口契约文件
+    foreach (var filePath in files)
+    {
+		var file = new FileInfo(filePath);
+		var name = file.Name.Replace("Entity.cs",string.Empty);
+		var lowerName =name.ToLower();
+        //定义输出文件
+#>
+			Mapper.CreateMap<<#=name#>Entity, <#=name#>Dto>();
+			Mapper.CreateMap<<#=name#>Dto, <#=name#>Entity>();
+<# 
+    }
+#>
+        }
+    }
+}
+<#
+    // 结束输出文件
+    manager.EndBlock();
+    // 执行编译
+    manager.Process(true);  
+#> 

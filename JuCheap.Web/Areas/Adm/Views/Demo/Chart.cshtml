@@ -1,0 +1,172 @@
+﻿@{
+    ViewBag.Title = "Chart";
+    Layout = "/Areas/Adm/Views/Shared/_Layout_Body.cshtml";
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/JS/Admin/jucheap/Chart")
+}
+
+<!--body wrapper start-->
+<div class="wrapper">
+
+    <div class="row">
+        <div class="col-md-6">
+            <section class="panel">
+                <header class="panel-heading">
+                    Multiple Statistics
+                    <span class="tools pull-right">
+                        <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
+                        <a class="t-collapse fa fa-chevron-down" href="javascript:;"></a>
+                        <a class="t-close fa fa-times" href="javascript:;"></a>
+                    </span>
+                </header>
+                <div class="panel-body">
+                    <div id="multi-sates">
+                        <div id="multi-states-container" class="f-c-space">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-6">
+            <section class="panel">
+                <header class="panel-heading">
+                    Realtime Statistics
+                    <span class="tools pull-right">
+                        <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
+                        <a class="t-collapse fa fa-chevron-down" href="javascript:;"></a>
+                        <a class="t-close fa fa-times" href="javascript:;"></a>
+                    </span>
+                </header>
+                <div class="panel-body">
+                    <div id="real-time">
+                        <div id="real-time-container" class="f-c-space">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <section class="panel">
+                <header class="panel-heading">
+                    Pie Chart
+                    <span class="tools pull-right">
+                        <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
+                        <a class="t-collapse fa fa-chevron-down" href="javascript:;"></a>
+                        <a class="t-close fa fa-times" href="javascript:;"></a>
+                    </span>
+                </header>
+                <div class="panel-body">
+                    <div id="pie-chart" class="pie-chart">
+                        <div id="pie-chart-container" class="f-c-space">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-md-6">
+            <section class="panel">
+                <header class="panel-heading">
+                    Donut pie
+                    <span class="tools pull-right">
+                        <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
+                        <a class="t-collapse fa fa-chevron-down" href="javascript:;"></a>
+                        <a class="t-close fa fa-times" href="javascript:;"></a>
+                    </span>
+                </header>
+                <div class="panel-body">
+                    <div id="donut-chart" class="pie-chart">
+                        <div id="donut-chart-container" class="f-c-space">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    Combine Statistics
+                    <span class="tools pull-right">
+                        <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
+                        <a class="t-collapse fa fa-chevron-down" href="javascript:;"></a>
+                        <a class="t-close fa fa-times" href="javascript:;"></a>
+                    </span>
+                </header>
+                <div class="panel-body">
+                    <div id="combine-chart">
+                        <div id="combine-chart-container" class="f-c-space">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    Multi Option Statistics
+                    <span class="tools pull-right">
+                        <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
+                        <a class="t-collapse fa fa-chevron-down" href="javascript:;"></a>
+                        <a class="t-close fa fa-times" href="javascript:;"></a>
+                    </span>
+                </header>
+                <div class="panel-body">
+                    <div id="toggle-chart">
+                        <div class="clearfix">
+                            <form class="form-horizontal pull-left ">
+                                <div class="control-group">
+                                    <label class="control-label">Chart Type :</label>
+                                    <div class="series-list">
+                                        <label class="checkbox inline">
+                                            <input id="chartType1" checked name="ct" type="radio" value="line" />Line Chart
+                                        </label>
+                                        <label class="checkbox inline">
+                                            <input id="chartType2" name="ct" type="radio" value="bar" />Bar Chart
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                            <form class="form-horizontal pull-right">
+                                <div class="control-group ">
+                                    <label class="control-label">Toggle series :</label>
+                                    <div class="series-list">
+                                        <label class="checkbox inline">
+                                            <input type="checkbox" id="cbdata1" checked>data One
+                                        </label>
+                                        <label class="checkbox inline">
+                                            <input type="checkbox" id="cbdata2" checked>data Two
+                                        </label>
+                                        <label class="checkbox inline">
+                                            <input type="checkbox" id="cbdata3" checked>data Three
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="legend-placeholder">
+                        </div>
+                        <div id="toggle-chart-container" class="f-c-space">
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+</div>
+<!--body wrapper end-->
+

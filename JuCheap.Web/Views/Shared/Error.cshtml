@@ -1,0 +1,35 @@
+﻿@using System.Web.Optimization
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" href="/Template/Admin/jucheap/img/ico/favicon.png"/>
+    <title>500 Error</title>
+
+    <!-- Base Styles -->
+    @Styles.Render("~/Template/Admin/jucheap/Css/BaseStyles")
+
+</head>
+<body class="body-500">
+
+    <div class="container">
+
+        <section class="error-wrapper">
+            <i class="icon-500"></i>
+            <div class="text-center">
+                <h2 class="purple-bg">师兄打得一手好怪，页面被你打败了</h2>
+            </div>
+            <p>请刷新页面重试，或者 <a href="mailto:service@JuCheap.com">联系我们</a></p>
+            <a href="javascript:history.go(-1);" class="back-btn">返回首页</a>
+        </section>
+
+    </div>
+</body>
+</html>

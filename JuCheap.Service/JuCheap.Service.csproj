@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F6160CD1-D241-4293-92F5-451749C7FC3A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JuCheap.Service</RootNamespace>
+    <AssemblyName>JuCheap.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.Extended.6.1.0.168\lib\net45\EntityFramework.Extended.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mehdime.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mehdime.Entity.1.0.0\lib\Mehdime.Entity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstracts\AutoMapperConfiguration.Partial.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Abstracts\EmailPoolService.cs" />
+    <Compile Include="Abstracts\EmailPoolService.Partial.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Abstracts\EmailReceiverService.Partial.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Abstracts\IEmailPoolService.cs" />
+    <Compile Include="Abstracts\IEmailPoolService.Partial.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Abstracts\IEmailReceiverService.Partial.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Abstracts\ILoginLogService.Partial.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Abstracts\IMenuService.Partial.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Abstracts\IPageViewService.Partial.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Abstracts\IRoleMenuService.Partial.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Abstracts\IRoleService.Partial.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Abstracts\IUserRoleService.Partial.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Abstracts\IUserService.cs" />
+    <Compile Include="Abstracts\IUserService.Partial.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Abstracts\LoginLogService.Partial.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Abstracts\MenuService.Partial.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Abstracts\PageViewService.Partial.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Abstracts\RoleMenuService.Partial.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Abstracts\RoleService.Partial.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Abstracts\ServiceBase.cs" />
+    <Compile Include="Abstracts\UserRoleService.Partial.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Abstracts\UserService.cs" />
+    <Compile Include="Abstracts\UserService.Partial.cs">
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AutoMapperConfiguration.cs" />
+    <Compile Include="Config\EmailConfiguration.cs" />
+    <Compile Include="Dto\BaseDto.cs" />
+    <Compile Include="Dto\EmailPoolDto.cs" />
+    <Compile Include="Dto\EmailReceiverDto.cs" />
+    <Compile Include="Dto\PageViewDto.cs" />
+    <Compile Include="Dto\QueryBase.cs" />
+    <Compile Include="Dto\ResultDto.cs" />
+    <Compile Include="Abstracts\IService.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DbInitService.cs" />
+    <Compile Include="Dto\LoginLogDto.cs" />
+    <Compile Include="Dto\MenuDto.cs" />
+    <Compile Include="Dto\RoleMenuDto.cs" />
+    <Compile Include="Dto\RoleDto.cs" />
+    <Compile Include="Dto\UserRoleDto.cs" />
+    <Compile Include="Dto\UserDto.cs" />
+    <Compile Include="Enum\EmailReceiverType.cs" />
+    <Compile Include="Enum\EmailStatus.cs" />
+    <Compile Include="Enum\MenuType.cs" />
+    <Compile Include="Enum\UserStatus.cs" />
+    <Compile Include="Pay\Alipay\AlipayConfig.cs" />
+    <Compile Include="Pay\Alipay\AlipayConfiguration.cs" />
+    <Compile Include="Pay\Alipay\AlipayCore.cs" />
+    <Compile Include="Pay\Alipay\AlipayNotify.cs" />
+    <Compile Include="Pay\Alipay\AlipaySubmit.cs" />
+    <Compile Include="Pay\Alipay\MD5.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JuCheap.Core\JuCheap.Core.csproj">
+      <Project>{55aa4b79-e6e7-4444-95d1-d67354a36ebb}</Project>
+      <Name>JuCheap.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JuCheap.Data\JuCheap.Data.csproj">
+      <Project>{1a890dc4-f856-4454-a78a-ee01c77351d1}</Project>
+      <Name>JuCheap.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JuCheap.Entity\JuCheap.Entity.csproj">
+      <Project>{7dc964b7-0b90-4ff2-91cc-0ab5462741aa}</Project>
+      <Name>JuCheap.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MultipleOutputHelper.ttinclude" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Abstracts\IService.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IService.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,189 @@
+﻿
+@{
+    ViewBag.Title = "Welcome";
+    Layout = "~/Areas/Adm/Views/Shared/_Layout_Body.cshtml";
+}
+<!--state overview start-->
+<div class="row state-overview">
+    <div class="col-lg-3 col-sm-6">
+        <section class="panel purple">
+            <div class="symbol">
+                <i class="fa fa-send"></i>
+            </div>
+            <div class="value white">
+                <h1 class="timer" data-from="0" data-to="320"
+                    data-speed="1000">
+                    320
+                </h1>
+                <p>New Order</p>
+            </div>
+        </section>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <section class="panel ">
+            <div class="symbol purple-color">
+                <i class="fa fa-tags"></i>
+            </div>
+            <div class="value gray">
+                <h1 class="purple-color timer" data-from="0" data-to="123"
+                    data-speed="1000">
+                    123
+                </h1>
+                <p>Item Sold</p>
+            </div>
+        </section>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <section class="panel green">
+            <div class="symbol ">
+                <i class="fa fa-cloud-upload"></i>
+            </div>
+            <div class="value white">
+                <h1 class="timer" data-from="0" data-to="432"
+                    data-speed="1000">
+                    432
+                </h1>
+                <p>Item Upload</p>
+            </div>
+        </section>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <section class="panel">
+            <div class="symbol green-color">
+                <i class="fa fa-bullseye"></i>
+            </div>
+            <div class="value gray">
+                <h1 class="green-color timer" data-from="0" data-to="2345"
+                    data-speed="3000">
+                    2345
+                </h1>
+                <p>Unique Visit</p>
+            </div>
+        </section>
+    </div>
+</div>
+<!--state overview end-->
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading" style="margin-bottom: 10px;">
+                JuCheap 3.0 来袭
+                <span class="tools pull-left">
+
+                </span>
+                <span class="tools pull-right">
+                    <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
+                    <a class="t-close fa fa-times" href="javascript:;"></a>
+                </span>
+            </header>
+            <div class="panel-body">
+                <h1 class="text-center"><a href="http://www.aspxpet.com" target="_blank" style="font-size: 2em">查看 JuCheap 3.0</a></h1>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading" style="margin-bottom: 10px;">
+                版本升级
+                <span class="tools pull-left">
+
+                </span>
+                <span class="tools pull-right">
+                    <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
+                    <a class="t-close fa fa-times" href="javascript:;"></a>
+                </span>
+            </header>
+            <div class="panel-body">
+                <p class="text-center">
+                    <img src="/Template/Admin/jucheap/img/qr-pay.jpg" alt="qrcode pay jucheap" class="responsive"/>
+                </p>
+                <p>
+                    <h2>JuCheap V2.0 版本将于 2016-12-30 预发布</h2>
+                </p>
+                <p style="color: red;"><b>JuCheap V2.0 重大改变：</b>
+                </p>
+                <p style="color: red;">1.相对于V1.*版本的框架，更加的简洁</p>
+                <p style="color: red;">2.T4模板，一键生成多种类型的文件</p>
+                <p style="color: red;">3.DI容器，由MEF改成了AutoFac，可选属性注入和构造函数注入两种方式。</p>
+                <p style="color: red;">4.响应式布局，同时支持PC、平板。</p>
+                <p style="color: red;">5.EF将同时支持SQL和MySql数据库，<b>部分支持Oracle</b>。
+                </p>
+                <p style="color: red;">6.前端UI由JqGrid变成了Datatable，以此来支持响应式布局。</p>
+                <p style="color: red;">7.全新的UI视觉体验。</p>
+                <p style="color: red;">8.新增Quartz.Net自动任务功能。</p>
+                <p style="color: red;">9.权限系统更加的完善，可以管控到模块 -> 菜单 -> 按钮。</p>
+                <p style="color: Blue;">
+                    <b>价格<b style="color: red; font-size: 2em;">￥198</b></b>
+                </p>
+                <p>
+                    购买JuCheap V2.0，包括的项目：一整套MVC后台管理系统源代码 @*+ 2套纯HTML的Demo源代码；*@
+                </p>
+                <p>
+                    <h2>JuCheap V2.0 于 2016-02-02 发布了beta版。</h2>
+                </p>
+
+
+                <p>
+                    <h2>V1.1 版本正式发布 2015-09-21</h2>
+                </p>
+                <p>1.T4模板升级，更加智能化，不需要手动配置代码生成路径</p>
+
+                <p>
+                    <h2>V1.2 版本正式发布 2015-11-01</h2>
+                </p>
+                <p>1.jqGrid新增行编辑的功能，更加的简洁</p>
+
+
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading" style="margin-bottom: 10px;">
+                JuCheap介绍
+                <span class="tools pull-left">
+
+                </span>
+                <span class="tools pull-right">
+                    <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
+                    <a class="t-close fa fa-times" href="javascript:;"></a>
+                </span>
+            </header>
+            <div class="panel-body">
+                <p>
+                    <b>
+                        JuCheap是一个完全响应式，使用 MVC + EF + Bootstrap3.3.4 版本开发的后台管理系统模板，采用了左右两栏式等多种布局形式，使用了Html5+CSS3等现代技术，提供了诸多的强大的可以重新组合的UI组件，丰富的jQuery插件，可以用于所有的Web应用程序，如网站管理后台，会员中心，CMS，CRM，OA后台系统的模板，JuCheap使用到的技术完全开源，支持自定义扩展，你可以根据自己的需求定制一套属于你的后台管理模板。
+                    </b>
+                </p>
+
+                <h3>JuCheap特点</h3>
+                <p>完全响应式布局（支持电脑、平板等主流设备）;扁平化设计</p>
+                <p>基于Jquery和Bootstrap</p>
+                <p>丰富的UI组件</p>
+                <p>采用HTML5 & CSS3</p>
+                <p>自定义扩展</p>
+                <p>静态资源文件合并压缩</p>
+
+                <h3>JuCheap使用到的技术包括:</h3>
+                <p>C#,MVC,EF</p>
+                <p>T4模板批量生成</p>
+                <p>Jquery,jqGrid</p>
+                <p>Bootstrap</p>
+                <p>DDD</p>
+                <p>AutoMapper</p>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+
+
+

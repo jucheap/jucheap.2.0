@@ -1,0 +1,338 @@
+﻿@{
+    Layout = "/Areas/Adm/Views/Shared/_Layout_Body.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-6">
+        <section class="panel">
+            <header class="panel-heading ">
+                Default Buttons
+            </header>
+            <div class="panel-body">
+                <button type="button" class="btn btn-default m-b-10">Default</button>
+                <button type="button" class="btn btn-primary m-b-10">Primary</button>
+                <button type="button" class="btn btn-success m-b-10">Success</button>
+                <button type="button" class="btn btn-info m-b-10">Info</button>
+                <button type="button" class="btn btn-warning m-b-10">Warning</button>
+                <button type="button" class="btn btn-danger m-b-10">Danger</button>
+
+                <button class="btn btn-default disabled m-b-10">Disabled</button>
+                <button class="btn btn-primary disabled m-b-10">Disabled</button>
+                <button class="btn btn-success disabled m-b-10">Disabled</button>
+                <button class="btn btn-warning disabled m-b-10">Disabled</button>
+                <button class="btn btn-danger disabled m-b-10">Disabled</button>
+            </div>
+        </section>
+        <section class="panel">
+            <header class="panel-heading ">
+                Rounded Buttons
+            </header>
+            <div class="panel-body">
+                <button type="button" class="btn btn-round btn-default">Default</button>
+                <button type="button" class="btn btn-round btn-primary">Primary</button>
+                <button type="button" class="btn btn-round btn-success">Success</button>
+                <button type="button" class="btn btn-round btn-info">Info</button>
+                <button type="button" class="btn btn-round btn-warning">Warning</button>
+                <button type="button" class="btn btn-round btn-danger">Danger</button>
+            </div>
+        </section>
+        <section class="panel">
+            <header class="panel-heading ">
+                Addon Buttons
+            </header>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-lg btn-default addon-btn m-b-10">
+                            <i class="fa fa-cog"></i>
+                            Default
+                        </button>
+                        <button class="btn btn-lg btn-success addon-btn m-b-10">
+                            <i class="fa fa-backward"></i>
+                            Backward
+                        </button>
+                        <button class="btn btn-lg btn-success addon-btn m-b-10">
+                            <i class="fa fa-forward pull-right"></i>
+                            Forward
+                        </button>
+                        <p class="text-muted">Large size</p>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-default addon-btn m-b-10">
+                            <i class="fa fa-tasks"></i>
+                            default
+                        </button>
+                        <button class="btn btn-danger addon-btn m-b-10">
+                            <i class="fa fa-plug pull-right"></i>
+                            danger
+                        </button>
+
+                        <button class="btn btn-warning addon-btn m-b-10">
+                            <i class="fa fa-warning"></i>
+                            Warn
+                        </button>
+
+                        <button class="btn btn-info addon-btn m-b-10">
+                            <i class="fa fa-info"></i>
+                            Info
+                        </button>
+                        <p class="text-muted">Normal size</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-sm btn-primary addon-btn m-b-10">
+                            <i class="fa fa-info"></i>
+                            small size
+                        </button>
+                        <button class="btn btn-sm btn-info addon-btn m-b-10">
+                            <i class="fa fa-info pull-right"></i>
+                            small size
+                        </button>
+                        <button class="btn btn-sm btn-default addon-btn m-b-10">
+                            <i class="fa fa-info pull-right"></i>
+                            small size
+                        </button>
+                        <p class="text-muted">Small size</p>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+        <section class="panel">
+            <header class="panel-heading ">
+                Dropdowns Button
+            </header>
+            <div class="panel-body">
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">Default <span class="caret"></span></button>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="buttons.html#">Action</a></li>
+                        <li><a href="buttons.html#">Another action</a></li>
+                        <li><a href="buttons.html#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="buttons.html#">Separated link</a></li>
+                    </ul>
+                </div><!-- /btn-group -->
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle btn-sm" type="button">Primary <span class="caret"></span></button>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="buttons.html#">Action</a></li>
+                        <li><a href="buttons.html#">Another action</a></li>
+                        <li><a href="buttons.html#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="buttons.html#">Separated link</a></li>
+                    </ul>
+                </div><!-- /btn-group -->
+                <div class="btn-group">
+                    <button data-toggle="dropdown" class="btn btn-success dropdown-toggle btn-xs" type="button">Success <span class="caret"></span></button>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="buttons.html#">Action</a></li>
+                        <li><a href="buttons.html#">Another action</a></li>
+                        <li><a href="buttons.html#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="buttons.html#">Separated link</a></li>
+                    </ul>
+                </div><!-- /btn-group -->
+            </div>
+        </section>
+        <section class="panel">
+            <header class="panel-heading ">
+                Split Dropdowns Button
+            </header>
+            <div class="panel-body">
+                <div class="btn-group">
+                    <button class="btn btn-default" type="button">Default</button>
+                    <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button"><span class="caret"></span></button>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="buttons.html#">Action</a></li>
+                        <li><a href="buttons.html#">Another action</a></li>
+                        <li><a href="buttons.html#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="buttons.html#">Separated link</a></li>
+                    </ul>
+                </div><!-- /btn-group -->
+                <div class="btn-group dropup">
+                    <button class="btn btn-default" type="button">Dropup</button>
+                    <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button"><span class="caret"></span></button>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a href="buttons.html#">Action</a></li>
+                        <li><a href="buttons.html#">Another action</a></li>
+                        <li><a href="buttons.html#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="buttons.html#">Separated link</a></li>
+                    </ul>
+                </div><!-- /btn-group -->
+            </div>
+        </section>
+
+        <section class="panel">
+            <header class="panel-heading ">
+                Block level button
+            </header>
+            <div class="panel-body">
+                <button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
+                <button type="button" class="btn btn-warning btn-block">Block level button</button>
+                <button type="button" class="btn btn-danger btn-xs btn-block">Block level button</button>
+            </div>
+        </section>
+    </div>
+    <div class="col-sm-6">
+        <section class="panel">
+            <header class="panel-heading ">
+                Buttons Size
+            </header>
+            <div class="panel-body">
+                <button type="button" class="btn btn-default btn-lg">Large Button</button>
+                <button type="button" class="btn btn-primary">Default Button</button>
+                <button type="button" class="btn btn-success btn-sm">Small Button</button>
+                <button type="button" class="btn btn-info btn-xs">Extra Small Button</button>
+            </div>
+        </section>
+        <section class="panel">
+            <header class="panel-heading ">
+                Buttons With Icon
+            </header>
+            <div class="panel-body">
+                <button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Add </button>
+                <button data-toggle="button" class="btn btn-primary">
+                    <i class="fa fa-thumbs-up "></i>
+                    12
+                </button>
+                <button type="button" class="btn btn-info "><i class="fa fa-refresh"></i> Update</button>
+                <button type="button" class="btn btn-default "><i class="fa fa-cloud-upload"></i> Upload</button>
+
+                <button data-toggle="button" class="btn btn-default">
+                    <i class="fa fa-home"></i>
+                </button>
+                <button data-toggle="button" class="btn btn-default">
+                    <i class="fa fa-heart"></i>
+                </button>
+            </div>
+        </section>
+        <section class="panel">
+            <header class="panel-heading ">
+                Group Buttons
+            </header>
+            <div class="panel-body">
+                <div class="btn-row">
+                    <div class="btn-group">
+                        <button class="btn btn-default" type="button">Left</button>
+                        <button class="btn btn-default" type="button">Middle</button>
+                        <button class="btn btn-default" type="button">Right</button>
+                    </div>
+                    <div class="btn-group  btn-group-sm">
+                        <button class="btn btn-default" type="button">Left</button>
+                        <button class="btn btn-default" type="button">Middle</button>
+                        <button class="btn btn-default" type="button">Right</button>
+                    </div>
+                </div>
+                <p class="text-muted">Vertical button groups</p>
+                <div class="btn-row">
+                    <div class="btn-group-vertical">
+                        <button class="btn btn-default" type="button">Top</button>
+                        <button class="btn btn-default" type="button">Middle</button>
+                        <button class="btn btn-default" type="button">Bottom</button>
+                    </div>
+                </div>
+                <p class="text-muted">Nested button groups</p>
+                <div class="btn-row">
+                    <div class="btn-group">
+                        <button class="btn btn-default" type="button">1</button>
+                        <button class="btn btn-danger" type="button">2</button>
+                        <button class="btn btn-default" type="button">3</button>
+                        <div class="btn-group">
+                            <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button"> Dropdown <span class="caret"></span> </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="buttons.html#">Dropdown link 1</a></li>
+                                <li><a href="buttons.html#">Dropdown link 2</a></li>
+                                <li><a href="buttons.html#">Dropdown link 3</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-muted">Multiple button groups</p>
+                <div class="btn-row">
+                    <div class="btn-toolbar">
+                        <div class="btn-group">
+                            <button class="btn btn-info" type="button">1</button>
+                            <button class="btn btn-info active" type="button">2</button>
+                            <button class="btn btn-info" type="button">3</button>
+                            <button class="btn btn-info" type="button">4</button>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-success" type="button">5</button>
+                            <button class="btn btn-success" type="button">6</button>
+                            <button class="btn btn-success" type="button">7</button>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-warning" type="button">8</button>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-muted">Group Checkbox</p>
+                <div class="btn-row">
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-primary">
+                            <input type="checkbox"> Option 1
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox"> Option 2
+                        </label>
+                        <label class="btn btn-primary">
+                            <input type="checkbox"> Option 3
+                        </label>
+                    </div>
+                </div>
+
+                <p class="text-muted">Group Radio</p>
+                <div class="btn-row">
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-default">
+                            <input type="radio" name="options" id="option1"> Option 1
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" name="options" id="option2"> Option 2
+                        </label>
+                        <label class="btn btn-default">
+                            <input type="radio" name="options" id="option3"> Option 3
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="panel">
+            <header class="panel-heading ">
+                Justified Button groups
+            </header>
+            <div class="panel-body">
+                <div class="btn-group btn-group-justified">
+                    <a class="btn btn-warning" href="buttons.html#">Left</a>
+                    <a class="btn btn-info" href="buttons.html#">Middle</a>
+                    <a class="btn btn-primary" href="buttons.html#">Right</a>
+                </div>
+            </div>
+        </section>
+        <section class="panel">
+            <header class="panel-heading ">
+                Star Rating Example
+            </header>
+            <div class="panel-body">
+                <span class="rating">
+                    <span class="star"></span>
+                    <span class="star"></span>
+                    <span class="star"></span>
+                    <span class="star"></span>
+                    <span class="star"></span>
+                </span>
+            </div>
+        </section>
+    </div>
+</div>

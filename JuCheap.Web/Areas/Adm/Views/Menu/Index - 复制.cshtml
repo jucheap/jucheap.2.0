@@ -1,0 +1,120 @@
+﻿@using System.Text
+@using JuCheap.Service.Dto
+@{
+    ViewBag.Title = "title";
+    Layout = "/Areas/Adm/Views/Shared/_Layout_Body.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading head-border">
+                &nbsp;
+                <span class="tools pull-left">
+                    @if (ViewBag.MyButtons != null)
+                    {
+                        List<MenuDto> btns = ViewBag.MyButtons;
+                        StringBuilder sb = new StringBuilder();
+                        foreach (var btn in btns)
+                        {
+                            sb.AppendFormat("<button type=\"button\" class=\"btn btn-success m-b-10\" onclick=\"jucheap.goAction(this, {0}, {1},{2}, '{3}',grid)\">{4}</button>&nbsp;&nbsp;", ViewContext.RouteData.Values["moudleId"], btn.ParentId, btn.Id, btn.Url, btn.Name);
+                        }
+                        @(new MvcHtmlString(sb.ToString()))
+                    }
+                </span>
+                <span class="tools pull-right">
+                    <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
+                    <a class="t-collapse fa fa-chevron-down" href="javascript:;"></a>
+                    <a class="t-close fa fa-times" href="javascript:;"></a>
+                </span>
+            </div>
+            <div class="panel-body">
+                <div id="FlatTree4" class="tree tree-solid-line">
+                    <div class="tree-folder" style="display: none;">
+                        <div class="tree-folder-header">
+                            <i class="fa fa-folder"></i>
+                            <div class="tree-folder-name"></div>
+                        </div>
+                        <div class="tree-folder-content"></div>
+                        <div class="tree-loader" style="display: none"></div>
+                    </div>
+                    <div class="tree-item" style="display: none;">
+                        <i class="tree-dot"></i>
+                        <div class="tree-item-name"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@section StylesBefore{
+    @Styles.Render("~/Template/Admin/jucheap/Css/TreeStyle")
+}
+@section Scripts{
+    @Scripts.Render("~/JS/Admin/jucheap/Tree")
+    <script>
+        function myTreeInit() {
+            var DataSourceTree = function (options) {
+                this.url = options.url;
+            };
+            DataSourceTree.prototype = {
+                data: function (options, callback) {
+                    var param = null;
+
+                    if (!("name" in options) && !("type" in options)) {
+                        param = 0;//load the first level  
+                    } else if ("type" in options && options.type === "folder") {
+                        if ("additionalParameters" in options && "children" in options.additionalParameters) {
+                            param = options.additionalParameters["id"];
+                        }
+                    }
+
+                    if (param != null) {
+                        $.ajax({
+                            url: this.url,
+                            data: 'id=' + param,
+                            type: 'get',
+                            dataType: 'json',
+                            success: function(response) {
+                                if (response)
+                                    callback({ data: response });
+                            },
+                            error: function(response) {
+                                console.log(response);
+                            }
+                        });
+                    }
+                }
+            };
+
+            $('#FlatTree4').tree({
+                'dataSource': new DataSourceTree({ url: '/Adm/Menu/GetList' }),
+                'multiSelect': true,
+                'loadingHTML': '<div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div>',
+                'open-icon': 'icon-minus',
+                'close-icon': 'icon-plus',
+                'selectable': true,
+                'selected-icon': 'icon-ok',
+                'unselected-icon': 'icon-remove'
+            });
+            $('#FlatTree4').on('loaded', function (evt, data) {
+                console.log('tree content loaded', data);
+            });
+
+            $('#FlatTree4').on('opened', function (evt, data) {
+                console.log('sub-folder opened: ', data);
+            });
+
+            $('#FlatTree4').on('closed', function (evt, data) {
+                console.log('sub-folder closed: ', data);
+            });
+
+            $('#FlatTree4').on('selected', function (evt, data) {
+                console.log('item selected: ', data);
+            });
+        }
+
+        myTreeInit();
+    </script>
+}

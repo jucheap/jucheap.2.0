@@ -1,0 +1,35 @@
+﻿@using System.Web.Optimization
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/Template/Admin/jucheap/img/ico/favicon.png" />
+    <title>404 Error</title>
+
+    <!-- Base Styles -->
+    @Styles.Render("~/Template/Admin/jucheap/Css/BaseStyles")
+
+    @Html.Partial("BaiduTongji", new { Area = "Adm" })
+</head>
+
+<body class="body-404">
+
+    <section class="error-wrapper">
+        <i class="icon-404"></i>
+        <div class="text-center">
+            <h2 class="green-bg">页面走丢了</h2>
+        </div>
+        <p>你要查看的页面走丢了，你以为我想这样吗!</p>
+        <a href="/" class="back-btn">返回首页</a>
+    </section>
+
+</body>
+</html>

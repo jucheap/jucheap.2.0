@@ -1,0 +1,97 @@
+﻿
+@{
+    Layout = "/Areas/Adm/Views/Shared/_Layout_Body.cshtml";
+}
+@section StylesBefore{
+    @Styles.Render("~/Template/Admin/jucheap/Css/DataTable")
+}
+@section Scripts{
+    @Scripts.Render("~/JS/Admin/jucheap/DataTable")
+
+    <script>
+        var grid = null;
+
+        function reload() {
+            $("#go_search").trigger("click");
+        }
+
+        $(function() {
+            var cols = [
+                { data: "Id", name: "Id", orderable: false },
+                { data: "LoginName", name: "LoginName", orderable: true },
+                { data: "Url", name: "Url", orderable: false },
+                { data: "IP", name: "IP", orderable: false },
+                {
+                    data: function(e) {
+                        return e.CreateDateTime.toString().getDate();
+                    }, name: "CreateDateTime",
+                    orderable: true
+                }
+            ];
+            var config = {
+                id: "table_server",
+                url: "@Url.Action("GetList",@ViewContext.RouteData.Values)",
+                columns: cols,
+                order: [[4, "desc"]]
+            };
+            grid = new jucheap.grid(config);
+            grid.load();
+
+            $(".box-refresh").click(function() {
+                grid.reload();
+            });
+        });
+    </script>
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="hidden" id="hidden_filter">
+            @* 把需要搜索的条件放到hidden里面，在table格式化完成的时候直接调用$.html()赋值，免去了在js拼接标签的麻烦 *@
+            <div class="row" style="margin-right:0;">
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <label class="sr-only" for="keywords">关键字</label>
+                        <input type="text" class="form-control" id="keywords" name="keywords" placeholder="访问人" maxlength="20" />
+                    </div>
+                    <button type="button" class="btn btn-success" name="go_search">搜索</button>
+                </form>
+            </div>
+        </div>
+        <section class="panel">
+            <header class="panel-heading" style="margin-bottom: 10px;">
+                &nbsp;
+                <span class="tools pull-left">
+                    
+                </span>
+                <span class="tools pull-right">
+                    <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
+                    <a class="t-close fa fa-times" href="javascript:;"></a>
+                </span>
+            </header>
+            <table id="table_server" class="table responsive-data-table data-table table-hover">
+                <thead>
+                    <tr>
+                        <th style="width: 40px;">
+                            选择
+                        </th>
+                        <th>
+                            访问人
+                        </th>
+                        <th>
+                            地址
+                        </th>
+                        <th>
+                            IP
+                        </th>
+                        <th>
+                            日期
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </section>
+    </div>
+
+</div>
+

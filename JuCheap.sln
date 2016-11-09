@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuCheap.Entity", "JuCheap.Entity\JuCheap.Entity.csproj", "{7DC964B7-0B90-4FF2-91CC-0AB5462741AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuCheap.Data", "JuCheap.Data\JuCheap.Data.csproj", "{1A890DC4-F856-4454-A78A-EE01C77351D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuCheap.Core", "JuCheap.Core\JuCheap.Core.csproj", "{55AA4B79-E6E7-4444-95D1-D67354A36EBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuCheap.Service", "JuCheap.Service\JuCheap.Service.csproj", "{F6160CD1-D241-4293-92F5-451749C7FC3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuCheap.Web", "JuCheap.Web\JuCheap.Web.csproj", "{ECE655CF-9EB4-42C9-A689-63CB6F563A10}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01_JuCheap.Core", "01_JuCheap.Core", "{C5BD354E-5EC9-4EB1-865B-9FD04C7B5EB5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_JuCheap.Data", "02_JuCheap.Data", "{AA58D7DD-3F02-465B-A9E9-EE77E436606D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03_JuCheap.Service", "03_JuCheap.Service", "{A73B8515-83AA-48DA-8DE9-B847FE6AE1A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04_JuCheap.Web", "04_JuCheap.Web", "{80B0FAC8-BE3B-4BBB-A279-66A63E69CC9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DC964B7-0B90-4FF2-91CC-0AB5462741AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DC964B7-0B90-4FF2-91CC-0AB5462741AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DC964B7-0B90-4FF2-91CC-0AB5462741AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DC964B7-0B90-4FF2-91CC-0AB5462741AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A890DC4-F856-4454-A78A-EE01C77351D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A890DC4-F856-4454-A78A-EE01C77351D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A890DC4-F856-4454-A78A-EE01C77351D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A890DC4-F856-4454-A78A-EE01C77351D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55AA4B79-E6E7-4444-95D1-D67354A36EBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55AA4B79-E6E7-4444-95D1-D67354A36EBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55AA4B79-E6E7-4444-95D1-D67354A36EBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55AA4B79-E6E7-4444-95D1-D67354A36EBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6160CD1-D241-4293-92F5-451749C7FC3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6160CD1-D241-4293-92F5-451749C7FC3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6160CD1-D241-4293-92F5-451749C7FC3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6160CD1-D241-4293-92F5-451749C7FC3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECE655CF-9EB4-42C9-A689-63CB6F563A10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECE655CF-9EB4-42C9-A689-63CB6F563A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECE655CF-9EB4-42C9-A689-63CB6F563A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECE655CF-9EB4-42C9-A689-63CB6F563A10}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7DC964B7-0B90-4FF2-91CC-0AB5462741AA} = {AA58D7DD-3F02-465B-A9E9-EE77E436606D}
+		{1A890DC4-F856-4454-A78A-EE01C77351D1} = {AA58D7DD-3F02-465B-A9E9-EE77E436606D}
+		{55AA4B79-E6E7-4444-95D1-D67354A36EBB} = {C5BD354E-5EC9-4EB1-865B-9FD04C7B5EB5}
+		{F6160CD1-D241-4293-92F5-451749C7FC3A} = {A73B8515-83AA-48DA-8DE9-B847FE6AE1A7}
+		{ECE655CF-9EB4-42C9-A689-63CB6F563A10} = {80B0FAC8-BE3B-4BBB-A279-66A63E69CC9E}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://no-erp.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = JuCheap.Core\\JuCheap.Core.csproj
+		SccProjectTopLevelParentUniqueName1 = JuCheap.sln
+		SccProjectName1 = JuCheap.Core
+		SccLocalPath1 = JuCheap.Core
+		SccProjectUniqueName2 = JuCheap.Data\\JuCheap.Data.csproj
+		SccProjectTopLevelParentUniqueName2 = JuCheap.sln
+		SccProjectName2 = JuCheap.Data
+		SccLocalPath2 = JuCheap.Data
+		SccProjectUniqueName3 = JuCheap.Entity\\JuCheap.Entity.csproj
+		SccProjectTopLevelParentUniqueName3 = JuCheap.sln
+		SccProjectName3 = JuCheap.Entity
+		SccLocalPath3 = JuCheap.Entity
+		SccProjectUniqueName4 = JuCheap.Service\\JuCheap.Service.csproj
+		SccProjectTopLevelParentUniqueName4 = JuCheap.sln
+		SccProjectName4 = JuCheap.Service
+		SccLocalPath4 = JuCheap.Service
+		SccProjectUniqueName5 = JuCheap.Web\\JuCheap.Web.csproj
+		SccProjectTopLevelParentUniqueName5 = JuCheap.sln
+		SccProjectName5 = JuCheap.Web
+		SccLocalPath5 = JuCheap.Web
+	EndGlobalSection
+EndGlobal

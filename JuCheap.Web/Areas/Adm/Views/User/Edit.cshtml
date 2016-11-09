@@ -1,0 +1,104 @@
+﻿@model JuCheap.Service.Dto.UserDto
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Adm/Views/Shared/_Layout_Body.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                编辑用户
+            </header>
+            <div class="panel-body">
+                <div class="form">
+                    <form class="cmxform form-horizontal tasi-form" id="submitForm" method="POST" action="@Request.Url.PathAndQuery" novalidate="novalidate">
+                        @Html.HiddenFor(item => item.Id, new { @class = "form-control" })
+                        <div class="form-group ">
+                            @Html.LabelFor(item => item.LoginName, new { @class = "control-label col-lg-2" })
+                            <div class="col-lg-10">
+                                @Html.TextBoxFor(item => item.LoginName, new { @class = "form-control", disabled = "disabled" })
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            @Html.LabelFor(item => item.Email, new { @class = "control-label col-lg-2" })
+                            <div class="col-lg-10">
+                                @Html.TextBoxFor(item => item.Email, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            @Html.LabelFor(item => item.RealName, new { @class = "control-label col-lg-2" })
+                            <div class="col-lg-10">
+                                @Html.TextBoxFor(item => item.RealName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            @Html.LabelFor(item => item.Password, new { @class = "control-label col-lg-2" })
+                            <div class="col-lg-10">
+                                @Html.PasswordFor(item => item.Password, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            @Html.LabelFor(item => item.Status, new { @class = "control-label col-lg-2" })
+                            <div class="col-lg-10">
+                                @Html.EnumDropDownListFor(item => item.Status, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <button class="btn btn-success" type="submit">保存</button>
+                                <button class="btn btn-default" type="button" onclick="jucheap.goback(this)">返回</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $("#submitForm").validate({
+            submitHandler: jucheap.buttonLoading,
+            rules: {
+                LoginName: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 20
+                },
+                Email: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 36,
+                    email:true
+                },
+                RealName: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 20
+                }
+            },
+            messages: {
+                LoginName: {
+                    required: "请输入登录账号",
+                    minlength: "最小长度为5个字符",
+                    maxlength: "最大长度为20个字符"
+                },
+                Email: {
+                    required: "请输入注册邮箱",
+                    minlength: "最小长度为6个字符",
+                    maxlength: "最大长度为36个字符",
+                    email: "请输入正确的邮箱地址"
+                },
+                RealName: {
+                    required: "请输入真实姓名",
+                    minlength: "最小长度为2个字符",
+                    maxlength: "最大长度为20个字符"
+                }
+            }
+        });
+    </script>
+}
+

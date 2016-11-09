@@ -1,0 +1,58 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "编辑器";
+    Layout = "/Areas/Adm/Views/Shared/_Layout_Body.cshtml";
+}
+
+@section StylesBefore
+{
+    @Styles.Render("~/Template/Admin/jucheap/Css/Editor")
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/JS/Admin/jucheap/Editor")
+    <script>
+
+        jQuery(document).ready(function(){
+            $('.wysihtml5').wysihtml5();
+
+            $('.summernote').summernote({
+                height: 200,                 // set editor height
+
+                minHeight: null,             // set minimum height of editor
+                maxHeight: null,             // set maximum height of editor
+
+                focus: true                 // set focus to editable area after initializing summernote
+            });
+        });
+
+    </script>
+
+}
+
+<!--body wrapper start-->
+<div class="wrapper">
+
+    <section class="panel">
+        <header class="panel-heading ">
+            Summernote Editor
+        </header>
+        <div class="panel-body">
+            <div class="summernote">Hello Summernote</div>
+        </div>
+    </section>
+
+    <section class="panel">
+        <header class="panel-heading ">
+            wysihtml5 Editor
+        </header>
+        <div class="panel-body">
+            <textarea class="wysihtml5 form-control" rows="9"></textarea>
+        </div>
+    </section>
+
+</div>
+<!--body wrapper end-->
+

@@ -1,0 +1,275 @@
+﻿@{
+    Layout = "/Areas/Adm/Views/Shared/_Layout_Body.cshtml";
+}
+
+<!-- profile head start-->
+<div class="profile-hero">
+    <div class="profile-intro">
+        <img src="/Template/Admin/jucheap/img/img1.jpg" alt="" />
+        <h1>Dave Gomache</h1>
+        <span>Web & User Interface Designer</span>
+        <div class="s-n">
+            <a href="@Url.Action("Profile")"> <i class="fa fa-facebook-square"></i></a>
+            <a href="@Url.Action("Profile")"> <i class="fa fa-twitter"></i></a>
+            <a href="@Url.Action("Profile")"> <i class="fa fa-dribbble"></i></a>
+        </div>
+    </div>
+    <div class="profile-follow">
+        <a href="@Url.Action("Profile")" class="btn btn-success"> <i class="fa fa-plus"></i> Add Friend</a>
+        <a href="@Url.Action("Profile")" class="btn btn-default"> <i class="fa fa-check"></i> Follow me</a>
+        <a href="@Url.Action("Profile")" class="btn btn-default"> <i class="fa fa-comment"></i> Message</a>
+    </div>
+    <div class="profile-value-info">
+        <div class="info">
+            <span>2097</span>
+            Friends
+        </div>
+        <div class="info">
+            <span>92</span>
+            Photos
+        </div>
+        <div class="info">
+            <span>205</span>
+            Followers
+        </div>
+    </div>
+</div>
+<!-- profile head end-->
+<!--body wrapper start-->
+<div class="wrapper no-pad">
+
+    <div class="profile-desk">
+        <aside class="p-aside">
+            <section class="panel profile-info">
+                <form>
+                    <textarea class="form-control input-lg p-text-area" rows="2" placeholder="Whats in your mind today?"></textarea>
+                </form>
+                <footer class="panel-footer">
+                    <button class="btn btn-success pull-right">Post</button>
+                    <ul class="nav nav-pills">
+                        <li>
+                            <a href="@Url.Action("Profile")"><i class="fa fa-user"></i></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Profile")"><i class="fa fa-location-arrow"></i></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Profile")"><i class=" fa fa-camera"></i></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Profile")"><i class="fa fa-smile-o"></i></a>
+                        </li>
+                    </ul>
+                </footer>
+            </section>
+
+            <div class="profile-timeline">
+                <ul>
+                    <li>
+                        <div class="avatar">
+                            <img src="/Template/Admin/jucheap/img/img2.jpg" alt="" />
+                        </div>
+                        <div class="avatar-desk">
+                            <a href="@Url.Action("Profile")">jonathan Smith</a> Uploaded 3 new photos of the latest photowalk regarding the the subject
+                            <span>7 minutes ago near Alaska, USA</span>
+                            <div class="gallery">
+                                <a href="@Url.Action("Profile")"><img src="/Template/Admin/jucheap/img/p-img-1.jpg" alt="" /></a>
+                                <a href="@Url.Action("Profile")"><img src="/Template/Admin/jucheap/img/p-img-2.jpg" alt="" /></a>
+                                <a href="@Url.Action("Profile")"><img src="/Template/Admin/jucheap/img/p-img-3.jpg" alt="" /></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="avatar">
+                            <img src="/Template/Admin/jucheap/img/img2.jpg" alt="" />
+                        </div>
+                        <div class="avatar-desk">
+                            <a href="@Url.Action("Profile")">jonathan Danniel </a> Completed the Sight visit.
+                            <span>2 hour ago near Alaska, USA</span>
+                            <div class="location">
+                                location map goes here
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="avatar">
+                            <img src="/Template/Admin/jucheap/img/img1.jpg" alt="" />
+                        </div>
+                        <div class="avatar-desk">
+                            <a href="@Url.Action("Profile")">Anna Emily </a> in Favers Photos <br />
+                            Dropped <a href="@Url.Action("Profile")" class="text-success"> Aaron Homadez </a> and <a href="@Url.Action("Profile")" class="text-success"> Jordy Nelson </a> and added <a href="@Url.Action("Profile")" class="text-success"> Kenny Rozes </a> and <a href="@Url.Action("Profile")" class="text-success"> Wels Walker</a>. And Some other stuff to
+                            talk about the event
+                            <span>4 days ago near Alaska, USA</span>
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="avatar">
+                            <img src="/Template/Admin/jucheap/img/img2.jpg" alt="" />
+                        </div>
+                        <div class="avatar-desk">
+                            <a href="@Url.Action("Profile")">jonathan Danniel </a> Send you a pdf file
+                            <span>2 days ago near Alaska, USA</span>
+                            <a href="@Url.Action("Profile")" class="text-primary"><i class="fa fa-file-pdf-o"> </i> final-status.pdf</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="avatar">
+                            <img src="/Template/Admin/jucheap/img/img2.jpg" alt="" />
+                        </div>
+                        <div class="avatar-desk">
+                            <a href="@Url.Action("Profile")">jonathan Danniel </a> Fly to Singapoe for a seminar on Global Worming
+                            <span>10 days ago near Alaska, USA</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="avatar">
+                            <img src="/Template/Admin/jucheap/img/img3.jpg" alt="" />
+                        </div>
+                        <div class="avatar-desk">
+                            <a href="@Url.Action("Profile")">jonathan Danniel </a> newly added to your team as a senior Analyst
+                            <span>10 days ago near Alaska, USA</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </aside>
+        <aside class="p-short-info">
+            <div class="widget">
+                <div class="title">
+                    <h1>Team Members</h1>
+                </div>
+                <div class="team-m">
+                    <a href="@Url.Action("Profile")">
+                        <img src="/Template/Admin/jucheap/img/img1.jpg" alt="" />
+                        <i class="online dot"></i>
+                    </a>
+                    <a href="@Url.Action("Profile")">
+                        <img src="/Template/Admin/jucheap/img/img2.jpg" alt="" />
+                    </a>
+                    <a href="@Url.Action("Profile")">
+                        <img src="/Template/Admin/jucheap/img/img4.jpg" alt="" />
+                        <i class="busy dot"></i>
+                    </a>
+                    <a href="@Url.Action("Profile")">
+                        <img src="/Template/Admin/jucheap/img/img3.jpg" alt="" />
+                    </a>
+
+                    <a href="@Url.Action("Profile")">
+                        <img src="/Template/Admin/jucheap/img/img1.jpg" alt="" />
+                        <i class="away dot"></i>
+                    </a>
+                    <a href="@Url.Action("Profile")">
+                        <img src="/Template/Admin/jucheap/img/img2.jpg" alt="" />
+                    </a>
+                    <a href="@Url.Action("Profile")">
+                        <img src="/Template/Admin/jucheap/img/img3.jpg" alt="" />
+                        <i class="offline dot"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="widget">
+                <div class="title">
+                    <h1>About</h1>
+                </div>
+                <p class="mbot20">
+                    Hello I am Dave Gomache  a web and user interface designer. I love to work with the application interface and the web elements.
+                </p>
+                <div class="bio-row">
+                    <p><span>Gender </span> Male </p>
+                </div>
+                <div class="bio-row">
+                    <p><span> Project Done </span> 50 + </p>
+                </div>
+                <div class="bio-row">
+                    <p><span> Skills </span> HTML, CSS, JavaScript </p>
+                </div>
+                <a href="@Url.Action("Profile")" class="btn btn-primary mtop10">Read More</a>
+            </div>
+
+            <div class="widget">
+                <div class="title">
+                    <h1 class="pull-left">Performance</h1>
+                    <a href="@Url.Action("Profile")" class="pull-right v-all"> View All </a>
+                </div>
+                <ul class="p-list">
+                    <li>
+                        <a href="@Url.Action("Profile")">
+                            <i class="fa fa-circle-o"></i> Total Product Sales  <span class="pull-right">23456</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Profile")">
+                            <i class="fa fa-circle-o"></i>  Total Product Refer  <span class="pull-right">$234</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Profile")">
+                            <i class="fa fa-circle-o"></i>  Total Earn  <span class="pull-right"> $345000</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="widget">
+                <div class="title">
+                    <h1 class="pull-left">Work Progress</h1>
+                    <a href="@Url.Action("Profile")" class="pull-right v-all"> View All </a>
+                </div>
+                <div class="sale-monitor work-progress">
+                    <div class="states">
+                        <div class="info">
+                            <div class="desc pull-left">Theme Forest</div>
+                            <div class="percent pull-right">70%</div>
+                        </div>
+                        <div class="progress progress-xs">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                                <span class="sr-only">70% </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="states">
+                        <div class="info">
+                            <div class="desc pull-left">Graphics River</div>
+                            <div class="percent pull-right">45%</div>
+                        </div>
+                        <div class="progress progress-xs">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+                                <span class="sr-only">45% </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="states">
+                        <div class="info">
+                            <div class="desc pull-left">Code Canyon</div>
+                            <div class="percent pull-right">35%</div>
+                        </div>
+                        <div class="progress progress-xs">
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 35%">
+                                <span class="sr-only">35% </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="widget">
+                <div class="twt-feed">
+                    <img src="/Template/Admin/jucheap/img/img1.jpg" alt="" />
+                    <h2><a href="@Url.Action("Profile")">JuCheap</a></h2>
+                    <p>Creative process: drawing some small <a href="@Url.Action("Profile")">@@macicon</a> via <a href="@Url.Action("Profile")">JuCheap</a></p>
+                </div>
+
+            </div>
+
+        </aside>
+    </div>
+
+</div>
+<!--body wrapper end-->
+
+

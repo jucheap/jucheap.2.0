@@ -1,0 +1,624 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "DataTable";
+    Layout = "/Areas/Adm/Views/Shared/_Layout_Body.cshtml";
+}
+<!--body wrapper start-->
+<div class="wrapper">
+
+    <div class="row">
+        <div class="col-sm-6">
+            <section class="panel">
+                <header class="panel-heading head-border">
+                    Basic Table
+                </header>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@@mdo</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@@fat</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+        <div class="col-sm-6">
+            <section class="panel">
+                <header class="panel-heading head-border">
+                    Striped Table
+                </header>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@@mdo</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@@fat</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <section class="panel">
+                <header class="panel-heading head-border">
+                    Border Table
+                </header>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2">1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@@mdo</td>
+                        </tr>
+                        <tr>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@@TwBootstrap</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@@fat</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+        <div class="col-sm-6">
+            <section class="panel">
+                <header class="panel-heading head-border">
+                    Hover Table
+                </header>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@@mdo</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@@fat</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@@twitter</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Sumon</td>
+                            <td>Mosa</td>
+                            <td>@@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <section class="panel">
+                <header class="panel-heading head-border">
+                    Custom Table
+                </header>
+                <table class="table table-striped custom-table table-hover">
+                    <thead>
+                        <tr>
+                            <th><i class="fa fa-book"></i> Product</th>
+                            <th><i class="fa fa-line-chart"></i> Progress</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Lorem Ipsum dorolo imit</td>
+                            <td>
+                                <div class="progress progress-striped progress-xs">
+                                    <div style="width: 80%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" role="progressbar" class="progress-bar progress-bar-success"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lorem Ipsum dorolo</td>
+                            <td>
+                                <div class="progress progress-striped progress-xs">
+                                    <div style="width: 66%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="66" role="progressbar" class="progress-bar progress-bar-warning"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lorem Ipsum dorolo</td>
+                            <td>
+                                <div class="progress progress-striped progress-xs">
+                                    <div style="width: 76%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="76" role="progressbar" class="progress-bar progress-bar-info"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lorem Ipsum dorolo</td>
+                            <td>
+                                <div class="progress progress-striped progress-xs">
+                                    <div style="width: 40%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-danger"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lorem Ipsum dorolo imit</td>
+                            <td>
+                                <div class="progress progress-striped progress-xs">
+                                    <div style="width: 80%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" role="progressbar" class="progress-bar progress-bar-success"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lorem Ipsum dorolo</td>
+                            <td>
+                                <div class="progress progress-striped progress-xs">
+                                    <div style="width: 66%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="66" role="progressbar" class="progress-bar progress-bar-warning"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lorem Ipsum dorolo</td>
+                            <td>
+                                <div class="progress progress-striped progress-xs">
+                                    <div style="width: 76%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="76" role="progressbar" class="progress-bar progress-bar-info"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lorem Ipsum dorolo</td>
+                            <td>
+                                <div class="progress progress-striped progress-xs">
+                                    <div style="width: 40%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-danger"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lorem Ipsum dorolo</td>
+                            <td>
+                                <div class="progress progress-striped progress-xs">
+                                    <div style="width: 66%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="66" role="progressbar" class="progress-bar progress-bar-warning"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+        <div class="col-lg-6">
+            <section class="panel">
+                <header class="panel-heading head-border">
+                    Contextual Table
+                </header>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Column heading</th>
+                            <th>Column heading</th>
+                            <th>Column heading</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="active">
+                            <th scope="row">1</th>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                        </tr>
+                        <tr class="success">
+                            <th scope="row">3</th>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                        </tr>
+                        <tr class="info">
+                            <th scope="row">5</th>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">6</th>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                        </tr>
+                        <tr class="warning">
+                            <th scope="row">7</th>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">8</th>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                        </tr>
+                        <tr class="danger">
+                            <th scope="row">9</th>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading head-border">
+                    Custom Table
+                </header>
+                <table class="table table-striped custom-table table-hover">
+                    <thead>
+                        <tr>
+                            <th><i class="fa fa-bookmark-o"></i> Company</th>
+                            <th class="hidden-xs"><i class="fa fa-building-o"></i> Descrition</th>
+                            <th><i class="fa fa-bar-chart-o"></i> Profit</th>
+                            <th><i class="fa fa-line-chart"></i> Progress</th>
+                            <th><i class=" fa fa-edit"></i> Status</th>
+                            <th class="hidden-xs"><i class="fa fa-cogs"></i> Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="@Url.Action("DataTable")">VectorLab</a></td>
+                            <td class="hidden-xs">Lorem Ipsum dorolo imit</td>
+                            <td>693030.00$ </td>
+                            <td>
+                                <div class="progress progress-striped progress-xs">
+                                    <div style="width: 80%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" role="progressbar" class="progress-bar progress-bar-success"></div>
+                                </div>
+                            </td>
+                            <td><span class="label label-info label-mini">Due</span></td>
+                            <td class="hidden-xs">
+                                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="@Url.Action("DataTable")">
+                                    Admin Lab
+                                </a>
+                            </td>
+                            <td class="hidden-xs">Lorem Ipsum dorolo</td>
+                            <td>10003.00$ </td>
+                            <td>
+                                <div class="progress progress-striped progress-xs">
+                                    <div style="width: 66%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="66" role="progressbar" class="progress-bar progress-bar-warning"></div>
+                                </div>
+                            </td>
+                            <td><span class="label label-warning label-mini">Due</span></td>
+                            <td class="hidden-xs">
+                                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="@Url.Action("DataTable")">
+                                    Metro Lab
+                                </a>
+                            </td>
+                            <td class="hidden-xs">Lorem Ipsum dorolo</td>
+                            <td>23400.00$ </td>
+                            <td>
+                                <div class="progress progress-striped progress-xs">
+                                    <div style="width: 76%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="76" role="progressbar" class="progress-bar progress-bar-info"></div>
+                                </div>
+                            </td>
+                            <td><span class="label label-success label-mini">Paid</span></td>
+                            <td class="hidden-xs">
+                                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="@Url.Action("DataTable")">
+                                    Flat Lab
+                                </a>
+                            </td>
+                            <td class="hidden-xs">Lorem Ipsum dorolo</td>
+                            <td>36342.50$ </td>
+                            <td>
+                                <div class="progress progress-striped progress-xs">
+                                    <div style="width: 40%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-danger"></div>
+                                </div>
+                            </td>
+                            <td><span class="label label-danger label-mini">Paid</span></td>
+                            <td class="hidden-xs">
+                                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="@Url.Action("DataTable")">Slick Lab</a></td>
+                            <td class="hidden-xs">Lorem Ipsum dorolo imit</td>
+                            <td>4022.00$ </td>
+                            <td>
+                                <div class="progress progress-striped progress-xs">
+                                    <div style="width: 80%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" role="progressbar" class="progress-bar progress-bar-success"></div>
+                                </div>
+                            </td>
+                            <td><span class="label label-primary label-mini">Due</span></td>
+                            <td class="hidden-xs">
+                                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="@Url.Action("DataTable")">
+                                    TroCode
+                                </a>
+                            </td>
+                            <td class="hidden-xs">Lorem Ipsum dorolo</td>
+                            <td>526456.00$ </td>
+                            <td>
+                                <div class="progress progress-striped progress-xs">
+                                    <div style="width: 50%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="progressbar" class="progress-bar progress-bar-warning"></div>
+                                </div>
+                            </td>
+                            <td><span class="label label-warning label-mini">Due</span></td>
+                            <td class="hidden-xs">
+                                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="@Url.Action("DataTable")">Vector Ltd</a></td>
+                            <td class="hidden-xs">Lorem Ipsum dorolo imit</td>
+                            <td>12120.00$ </td>
+                            <td>
+                                <div class="progress progress-striped progress-xs">
+                                    <div style="width: 43%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="43" role="progressbar" class="progress-bar progress-bar-info"></div>
+                                </div>
+                            </td>
+                            <td><span class="label label-success label-mini">Due</span></td>
+                            <td class="hidden-xs">
+                                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="@Url.Action("DataTable")">
+                                    Dashboard
+                                </a>
+                            </td>
+                            <td class="hidden-xs">Lorem Ipsum dorolo</td>
+                            <td>56456.00$ </td>
+                            <td>
+                                <div class="progress progress-striped progress-xs">
+                                    <div style="width: 66%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="66" role="progressbar" class="progress-bar progress-bar-success"></div>
+                                </div>
+                            </td>
+                            <td><span class="label label-warning label-mini">Due</span></td>
+                            <td class="hidden-xs">
+                                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="@Url.Action("DataTable")">Vector Ltd</a></td>
+                            <td class="hidden-xs">Lorem Ipsum dorolo imit</td>
+                            <td>12120.00$ </td>
+                            <td>
+                                <div class="progress progress-striped progress-xs">
+                                    <div style="width: 88%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="88" role="progressbar" class="progress-bar progress-bar-info"></div>
+                                </div>
+                            </td>
+                            <td><span class="label label-info label-mini">Due</span></td>
+                            <td class="hidden-xs">
+                                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="@Url.Action("DataTable")">
+                                    Modern
+                                </a>
+                            </td>
+                            <td class="hidden-xs">Lorem Ipsum dorolo</td>
+                            <td>56456.00$ </td>
+                            <td>
+                                <div class="progress progress-striped progress-xs">
+                                    <div style="width: 66%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="66" role="progressbar" class="progress-bar progress-bar-info"></div>
+                                </div>
+                            </td>
+                            <td><span class="label label-warning label-mini">Due</span></td>
+                            <td class="hidden-xs">
+                                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="panel">
+                <header class="panel-heading head-border">
+                    Responsive Table
+                </header>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Code</th>
+                                <th>Company</th>
+                                <th>Price</th>
+                                <th>Change</th>
+                                <th>High</th>
+                                <th>Low</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>AA</td>
+                                <td>Vector Lab</td>
+                                <td>$ 12123</td>
+                                <td>-0.01</td>
+                                <td>$1.39</td>
+                                <td>$2.39	</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>BB</td>
+                                <td>Flat Lab</td>
+                                <td>$ 2342</td>
+                                <td>+1.04</td>
+                                <td>$2.43</td>
+                                <td>$1.39</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>CC</td>
+                                <td>Metro Lab</td>
+                                <td>$ 4565</td>
+                                <td>-0.3</td>
+                                <td>$3.32</td>
+                                <td>$1.59</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">4</th>
+                                <td>DD</td>
+                                <td>Flat Lab</td>
+                                <td>$ 12123</td>
+                                <td>-0.01</td>
+                                <td>$1.39</td>
+                                <td>$2.39	</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">5</th>
+                                <td>EE</td>
+                                <td>Admin Lab</td>
+                                <td>$ 2342</td>
+                                <td>+1.04</td>
+                                <td>$2.43</td>
+                                <td>$1.39</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">6</th>
+                                <td>FF</td>
+                                <td>Slick Lab</td>
+                                <td>$ 4565</td>
+                                <td>-0.3</td>
+                                <td>$3.32</td>
+                                <td>$1.59</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</div>
+<!--body wrapper end-->

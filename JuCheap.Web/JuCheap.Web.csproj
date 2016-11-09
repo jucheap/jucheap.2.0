@@ -1,0 +1,830 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ECE655CF-9EB4-42C9-A689-63CB6F563A10}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JuCheap.Web</RootNamespace>
+    <AssemblyName>JuCheap.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Extras.Quartz, Version=1.7.0.0, Culture=neutral, PublicKeyToken=595f708ada5feacc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Extras.Quartz.1.7.0.0\lib\net40\Autofac.Extras.Quartz.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging, Version=3.3.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.3.0\lib\net40\Common.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.3.0\lib\net40\Common.Logging.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Mehdime.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mehdime.Entity.1.0.0\lib\Mehdime.Entity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=1.2.3.490, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.1.2.3\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.8\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.8\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Quartz, Version=2.3.3.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quartz.2.3.3\lib\net40\Quartz.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\ico\apple-touch-icon-114-precomposed.png" />
+    <Content Include="Images\ico\apple-touch-icon-144-precomposed.png" />
+    <Content Include="Images\ico\apple-touch-icon-57-precomposed.png" />
+    <Content Include="Images\ico\apple-touch-icon-72-precomposed.png" />
+    <Content Include="Images\ico\favicon.ico" />
+    <Content Include="Images\JuCheap-00.png" />
+    <Content Include="Images\JuCheap-01.png" />
+    <Content Include="Images\JuCheap-02.png" />
+    <Content Include="Images\JuCheap-03.png" />
+    <Content Include="Images\JuCheap-04.png" />
+    <Content Include="Images\JuCheap-05.png" />
+    <Content Include="Images\JuCheap-06.png" />
+    <Content Include="Images\JuCheap-07.png" />
+    <Content Include="Images\JuCheap-08.png" />
+    <Content Include="Images\JuCheap-09.png" />
+    <Content Include="Images\JuCheap-New.png" />
+    <Content Include="Images\pay.jpg" />
+    <Content Include="Images\v2\authen-menu.png" />
+    <Content Include="Images\v2\authen-success.png" />
+    <Content Include="Images\v2\authen.png" />
+    <Content Include="Images\v2\menu-del.png" />
+    <Content Include="Images\v2\menu.png" />
+    <Content Include="Images\v2\role.png" />
+    <Content Include="Images\v2\small\authen-menu.png" />
+    <Content Include="Images\v2\small\authen-success.png" />
+    <Content Include="Images\v2\small\authen.png" />
+    <Content Include="Images\v2\small\menu-del.png" />
+    <Content Include="Images\v2\small\menu.png" />
+    <Content Include="Images\v2\small\role.png" />
+    <Content Include="Images\v2\small\temp.png" />
+    <Content Include="Images\v2\small\user.png" />
+    <Content Include="Images\v2\temp.png" />
+    <Content Include="Images\v2\user.png" />
+    <Content Include="Scripts\ai.0.15.0-build58334.js" />
+    <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="Template\Admin\jucheap\css\Abel.css" />
+    <Content Include="Template\Admin\jucheap\css\bootstrap-reset.css" />
+    <Content Include="Template\Admin\jucheap\css\bootstrap-touchspin.css" />
+    <Content Include="Template\Admin\jucheap\css\bootstrap.min.css" />
+    <Content Include="Template\Admin\jucheap\css\default-theme.css" />
+    <Content Include="Template\Admin\jucheap\css\dropzone.css" />
+    <Content Include="Template\Admin\jucheap\css\font-awesome.css" />
+    <Content Include="Template\Admin\jucheap\css\icomoon-weather.css" />
+    <Content Include="Template\Admin\jucheap\css\jquery-ui-1.10.3.css" />
+    <Content Include="Template\Admin\jucheap\css\jquery.steps.css" />
+    <Content Include="Template\Admin\jucheap\css\layout-theme-one.css" />
+    <Content Include="Template\Admin\jucheap\css\layout-theme-three.css" />
+    <Content Include="Template\Admin\jucheap\css\layout-theme-two.css" />
+    <Content Include="Template\Admin\jucheap\css\owl.carousel.css" />
+    <Content Include="Template\Admin\jucheap\css\select2-bootstrap.css" />
+    <Content Include="Template\Admin\jucheap\css\select2.css" />
+    <Content Include="Template\Admin\jucheap\css\simple-line-icons.css" />
+    <Content Include="Template\Admin\jucheap\css\slidebars.css" />
+    <Content Include="Template\Admin\jucheap\css\SourceSansPro.css" />
+    <Content Include="Template\Admin\jucheap\css\style-responsive.css" />
+    <Content Include="Template\Admin\jucheap\css\style.css" />
+    <Content Include="Template\Admin\jucheap\css\tagsinput.css" />
+    <Content Include="Template\Admin\jucheap\fonts\fontawesome-webfont.svg" />
+    <Content Include="Template\Admin\jucheap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Template\Admin\jucheap\fonts\Simple-Line-Icons.svg" />
+    <Content Include="Template\Admin\jucheap\img\404.png" />
+    <Content Include="Template\Admin\jucheap\img\500.png" />
+    <Content Include="Template\Admin\jucheap\img\avatar-mini.jpg" />
+    <Content Include="Template\Admin\jucheap\img\details_close.png" />
+    <Content Include="Template\Admin\jucheap\img\details_open.png" />
+    <Content Include="Template\Admin\jucheap\img\flags\french_flag.jpg" />
+    <Content Include="Template\Admin\jucheap\img\flags\germany_flag.jpg" />
+    <Content Include="Template\Admin\jucheap\img\flags\italy_flag.jpg" />
+    <Content Include="Template\Admin\jucheap\img\flags\russia_flag.jpg" />
+    <Content Include="Template\Admin\jucheap\img\flags\spain_flag.jpg" />
+    <Content Include="Template\Admin\jucheap\img\gallery\1.jpg" />
+    <Content Include="Template\Admin\jucheap\img\gallery\2.jpg" />
+    <Content Include="Template\Admin\jucheap\img\gallery\3.jpg" />
+    <Content Include="Template\Admin\jucheap\img\gallery\4.jpg" />
+    <Content Include="Template\Admin\jucheap\img\gallery\5.jpg" />
+    <Content Include="Template\Admin\jucheap\img\gallery\6.jpg" />
+    <Content Include="Template\Admin\jucheap\img\ico\favicon.png" />
+    <Content Include="Template\Admin\jucheap\img\img-attachment.jpg" />
+    <Content Include="Template\Admin\jucheap\img\img1.jpg" />
+    <Content Include="Template\Admin\jucheap\img\img2.jpg" />
+    <Content Include="Template\Admin\jucheap\img\img3.jpg" />
+    <Content Include="Template\Admin\jucheap\img\img4.jpg" />
+    <Content Include="Template\Admin\jucheap\img\invoice-logo.png" />
+    <Content Include="Template\Admin\jucheap\img\k-img.jpg" />
+    <Content Include="Template\Admin\jucheap\img\layout\default-layout.jpg" />
+    <Content Include="Template\Admin\jucheap\img\layout\layout1.jpg" />
+    <Content Include="Template\Admin\jucheap\img\layout\layout2.jpg" />
+    <Content Include="Template\Admin\jucheap\img\layout\layout3.jpg" />
+    <Content Include="Template\Admin\jucheap\img\layout\layout4.jpg" />
+    <Content Include="Template\Admin\jucheap\img\layout\non_sticky.jpg" />
+    <Content Include="Template\Admin\jucheap\img\layout\sticky-sidebar.jpg" />
+    <Content Include="Template\Admin\jucheap\img\left-arrow.png" />
+    <Content Include="Template\Admin\jucheap\img\loading-background.png" />
+    <Content Include="Template\Admin\jucheap\img\lockscreen_user.jpg" />
+    <Content Include="Template\Admin\jucheap\img\login_logo.png" />
+    <Content Include="Template\Admin\jucheap\img\logo-icon.png" />
+    <Content Include="Template\Admin\jucheap\img\mega-menu\corner_image.jpg" />
+    <Content Include="Template\Admin\jucheap\img\mega-menu\mega_icon1.png" />
+    <Content Include="Template\Admin\jucheap\img\mega-menu\mega_icon2.png" />
+    <Content Include="Template\Admin\jucheap\img\mega-menu\mega_icon3.png" />
+    <Content Include="Template\Admin\jucheap\img\mega-menu\mega_icon4.png" />
+    <Content Include="Template\Admin\jucheap\img\news_image.jpg" />
+    <Content Include="Template\Admin\jucheap\img\p-img-1.jpg" />
+    <Content Include="Template\Admin\jucheap\img\p-img-2.jpg" />
+    <Content Include="Template\Admin\jucheap\img\p-img-3.jpg" />
+    <Content Include="Template\Admin\jucheap\img\pdf-attachment.jpg" />
+    <Content Include="Template\Admin\jucheap\img\profile-banner.jpg" />
+    <Content Include="Template\Admin\jucheap\img\qr-pay.jpg" />
+    <Content Include="Template\Admin\jucheap\img\right-arrow.png" />
+    <Content Include="Template\Admin\jucheap\img\select2-spinner.gif" />
+    <Content Include="Template\Admin\jucheap\img\select2.png" />
+    <Content Include="Template\Admin\jucheap\img\select2x2.png" />
+    <Content Include="Template\Admin\jucheap\img\sort_asc.png" />
+    <Content Include="Template\Admin\jucheap\img\sort_asc_disabled.png" />
+    <Content Include="Template\Admin\jucheap\img\sort_both.png" />
+    <Content Include="Template\Admin\jucheap\img\sort_desc.png" />
+    <Content Include="Template\Admin\jucheap\img\sort_desc_disabled.png" />
+    <Content Include="Template\Admin\jucheap\img\spinner.gif" />
+    <Content Include="Template\Admin\jucheap\img\timeline\img-1.jpg" />
+    <Content Include="Template\Admin\jucheap\img\w-p-img.jpg" />
+    <Content Include="Template\Admin\jucheap\img\weather-1.jpg" />
+    <Content Include="Template\Admin\jucheap\img\weather_background.jpg" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-colorpicker\css\colorpicker.css" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-colorpicker\img\alpha.png" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-colorpicker\img\hue.png" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-colorpicker\img\saturation.png" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-colorpicker\js\bootstrap-colorpicker.js" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-datepicker\css\datepicker.css" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-daterangepicker\daterangepicker-bs3.css" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-daterangepicker\moment.min.js" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-datetimepicker\css\datetimepicker.css" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-datetimepicker\js\bootstrap-datetimepicker.js" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-fileinput-master\css\fileinput.css" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-fileinput-master\img\loading-sm.gif" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-fileinput-master\img\loading.gif" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-fileinput-master\js\fileinput.js" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-timepicker\compiled\timepicker.css" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-timepicker\js\bootstrap-timepicker.js" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-validator.min.js" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-wysihtml5\bootstrap-wysihtml5.css" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
+    <Content Include="Template\Admin\jucheap\js\bootstrap.min.js" />
+    <Content Include="Template\Admin\jucheap\js\chart-js\chart.js" />
+    <Content Include="Template\Admin\jucheap\js\chartJs-init.js" />
+    <Content Include="Template\Admin\jucheap\js\dashboard-vmap-init.js" />
+    <Content Include="Template\Admin\jucheap\js\data-table-init.js" />
+    <Content Include="Template\Admin\jucheap\js\data-table\css\dataTables.colVis.min.css" />
+    <Content Include="Template\Admin\jucheap\js\data-table\css\dataTables.responsive.css" />
+    <Content Include="Template\Admin\jucheap\js\data-table\css\dataTables.scroller.css" />
+    <Content Include="Template\Admin\jucheap\js\data-table\css\dataTables.tableTools.css" />
+    <Content Include="Template\Admin\jucheap\js\data-table\css\jquery.dataTables.css" />
+    <Content Include="Template\Admin\jucheap\js\data-table\js\bootstrap-dataTable.js" />
+    <Content Include="Template\Admin\jucheap\js\data-table\js\dataTables.colVis.min.js" />
+    <Content Include="Template\Admin\jucheap\js\data-table\js\dataTables.responsive.min.js" />
+    <Content Include="Template\Admin\jucheap\js\data-table\js\dataTables.scroller.min.js" />
+    <Content Include="Template\Admin\jucheap\js\data-table\js\dataTables.tableTools.min.js" />
+    <Content Include="Template\Admin\jucheap\js\data-table\js\jquery.dataTables.min.js" />
+    <Content Include="Template\Admin\jucheap\js\dragging-calendar-event-init.js" />
+    <Content Include="Template\Admin\jucheap\js\dropzone.js" />
+    <Content Include="Template\Admin\jucheap\js\earning-chart-init.js" />
+    <Content Include="Template\Admin\jucheap\js\easy-pie-chart.js" />
+    <Content Include="Template\Admin\jucheap\js\file-input-init.js" />
+    <Content Include="Template\Admin\jucheap\js\flot-chart-init.js" />
+    <Content Include="Template\Admin\jucheap\js\flot-chart\flot-spline.js" />
+    <Content Include="Template\Admin\jucheap\js\flot-chart\jquery.flot.crosshair.js" />
+    <Content Include="Template\Admin\jucheap\js\flot-chart\jquery.flot.js" />
+    <Content Include="Template\Admin\jucheap\js\flot-chart\jquery.flot.pie.js" />
+    <Content Include="Template\Admin\jucheap\js\flot-chart\jquery.flot.resize.js" />
+    <Content Include="Template\Admin\jucheap\js\flot-chart\jquery.flot.selection.js" />
+    <Content Include="Template\Admin\jucheap\js\flot-chart\jquery.flot.stack.js" />
+    <Content Include="Template\Admin\jucheap\js\flot-chart\jquery.flot.tooltip.min.js" />
+    <Content Include="Template\Admin\jucheap\js\form-validation-init.js" />
+    <Content Include="Template\Admin\jucheap\js\fuelux\css\tree-style.css" />
+    <Content Include="Template\Admin\jucheap\js\fuelux\img\tree-icons.png" />
+    <Content Include="Template\Admin\jucheap\js\fuelux\js\tree.min.js" />
+    <Content Include="Template\Admin\jucheap\js\fullcalendar\bootstrap-fullcalendar.css" />
+    <Content Include="Template\Admin\jucheap\js\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Template\Admin\jucheap\js\gmaps-init.js" />
+    <Content Include="Template\Admin\jucheap\js\gmaps.js" />
+    <Content Include="Template\Admin\jucheap\js\gritter.js" />
+    <Content Include="Template\Admin\jucheap\js\gritter\css\jquery.gritter.css" />
+    <Content Include="Template\Admin\jucheap\js\gritter\images\gritter-light.png" />
+    <Content Include="Template\Admin\jucheap\js\gritter\images\gritter.png" />
+    <Content Include="Template\Admin\jucheap\js\gritter\images\ie-spacer.gif" />
+    <Content Include="Template\Admin\jucheap\js\gritter\js\jquery.gritter.js" />
+    <Content Include="Template\Admin\jucheap\js\icheck-init.js" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\all.css" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\aero%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\aero.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\blue%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\blue.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\flat%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\flat.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\green%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\green.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\grey%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\grey.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\orange%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\orange.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\pink%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\pink.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\purple%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\purple.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\red%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\red.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\yellow%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\yellow.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\flat\_all.css" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\futurico\futurico%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\futurico\futurico.css" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\futurico\futurico.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\icheck.min.js" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\line\line%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\line\line.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\line\_all.css" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\aero%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\aero.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\blue%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\blue.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\green%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\green.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\grey%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\grey.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\minimal%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\minimal.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\orange%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\orange.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\pink%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\pink.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\purple%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\purple.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\red%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\red.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\yellow%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\yellow.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\minimal\_all.css" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\polaris\polaris%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\polaris\polaris.css" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\polaris\polaris.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\aero%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\aero.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\blue%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\blue.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\green%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\green.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\grey%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\grey.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\orange%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\orange.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\pink%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\pink.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\purple%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\purple.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\red%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\red.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\square%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\square.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\yellow%402x.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\yellow.png" />
+    <Content Include="Template\Admin\jucheap\js\icheck\skins\square\_all.css" />
+    <Content Include="Template\Admin\jucheap\js\ion-rangeSlider\css\ion-custom-slicklab.css" />
+    <Content Include="Template\Admin\jucheap\js\ion-rangeSlider\css\ion.rangeSlider.css" />
+    <Content Include="Template\Admin\jucheap\js\ion-rangeSlider\js\ion.rangeSlider.js" />
+    <Content Include="Template\Admin\jucheap\js\ion-slider-init.js" />
+    <Content Include="Template\Admin\jucheap\js\jquery-1.10.2.min.js" />
+    <Content Include="Template\Admin\jucheap\js\jquery-1.11.1.min.js" />
+    <Content Include="Template\Admin\jucheap\js\jquery-countTo\jquery.countTo.js" />
+    <Content Include="Template\Admin\jucheap\js\jquery-easy-pie-chart\jquery.easy-pie-chart.css" />
+    <Content Include="Template\Admin\jucheap\js\jquery-easy-pie-chart\jquery.easy-pie-chart.js" />
+    <Content Include="Template\Admin\jucheap\js\jquery-migrate.js" />
+    <Content Include="Template\Admin\jucheap\js\jquery-ui\jquery-ui-1.10.1.custom.min.css" />
+    <Content Include="Template\Admin\jucheap\js\jquery-ui\jquery-ui-1.10.1.custom.min.js" />
+    <Content Include="Template\Admin\jucheap\js\jquery.nicescroll.js" />
+    <Content Include="Template\Admin\jucheap\js\jquery.pulsate.min.js" />
+    <Content Include="Template\Admin\jucheap\js\jquery.steps.min.js" />
+    <Content Include="Template\Admin\jucheap\js\jquery.ui.touch-punch.min.js" />
+    <Content Include="Template\Admin\jucheap\js\jquery.validate.min.js" />
+    <Content Include="Template\Admin\jucheap\js\json2.js" />
+    <Content Include="Template\Admin\jucheap\js\jucheap.js" />
+    <Content Include="Template\Admin\jucheap\js\jucheap.select.js" />
+    <Content Include="Template\Admin\jucheap\js\jucheap.tables.js" />
+    <Content Include="Template\Admin\jucheap\js\layer\extend\layer.ext.js" />
+    <Content Include="Template\Admin\jucheap\js\layer\layer.js" />
+    <Content Include="Template\Admin\jucheap\js\layer\skin\default\icon-ext.png" />
+    <Content Include="Template\Admin\jucheap\js\layer\skin\default\icon.png" />
+    <Content Include="Template\Admin\jucheap\js\layer\skin\default\loading-0.gif" />
+    <Content Include="Template\Admin\jucheap\js\layer\skin\default\loading-1.gif" />
+    <Content Include="Template\Admin\jucheap\js\layer\skin\default\loading-2.gif" />
+    <Content Include="Template\Admin\jucheap\js\layer\skin\layer.css" />
+    <Content Include="Template\Admin\jucheap\js\layer\skin\layer.ext.css" />
+    <Content Include="Template\Admin\jucheap\js\jucheap.menu.js" />
+    <Content Include="Template\Admin\jucheap\js\modernizr.min.js" />
+    <Content Include="Template\Admin\jucheap\js\morris-chart\morris.css" />
+    <Content Include="Template\Admin\jucheap\js\morris-chart\morris.js" />
+    <Content Include="Template\Admin\jucheap\js\morris-chart\raphael-min.js" />
+    <Content Include="Template\Admin\jucheap\js\morris-init.js" />
+    <Content Include="Template\Admin\jucheap\js\nestable-init.js" />
+    <Content Include="Template\Admin\jucheap\js\nestable\jquery.nestable.css" />
+    <Content Include="Template\Admin\jucheap\js\nestable\jquery.nestable.js" />
+    <Content Include="Template\Admin\jucheap\js\owl.carousel.js" />
+    <Content Include="Template\Admin\jucheap\js\picker-init.js" />
+    <Content Include="Template\Admin\jucheap\js\pulstate.js" />
+    <Content Include="Template\Admin\jucheap\js\scripts.js" />
+    <Content Include="Template\Admin\jucheap\js\select2-init.js" />
+    <Content Include="Template\Admin\jucheap\js\select2.js" />
+    <Content Include="Template\Admin\jucheap\js\slidebars.min.js" />
+    <Content Include="Template\Admin\jucheap\js\sparkline\jquery.sparkline.js" />
+    <Content Include="Template\Admin\jucheap\js\sparkline\sparkline-init.js" />
+    <Content Include="Template\Admin\jucheap\js\spinner-init.js" />
+    <Content Include="Template\Admin\jucheap\js\summernote\dist\summernote.css" />
+    <Content Include="Template\Admin\jucheap\js\summernote\dist\summernote.min.js" />
+    <Content Include="Template\Admin\jucheap\js\switchery\switchery-init.js" />
+    <Content Include="Template\Admin\jucheap\js\switchery\switchery.min.css" />
+    <Content Include="Template\Admin\jucheap\js\switchery\switchery.min.js" />
+    <Content Include="Template\Admin\jucheap\js\tags-input-init.js" />
+    <Content Include="Template\Admin\jucheap\js\tags-input.js" />
+    <Content Include="Template\Admin\jucheap\js\toastr-init.js" />
+    <Content Include="Template\Admin\jucheap\js\toastr-master\toastr.css" />
+    <Content Include="Template\Admin\jucheap\js\toastr-master\toastr.js" />
+    <Content Include="Template\Admin\jucheap\js\todo-init.js" />
+    <Content Include="Template\Admin\jucheap\js\touchspin.js" />
+    <Content Include="Template\Admin\jucheap\js\tree-init.js" />
+    <Content Include="Template\Admin\jucheap\js\vector-map\jquery-jvectormap-1.1.1.css" />
+    <Content Include="Template\Admin\jucheap\js\vector-map\jquery-jvectormap-1.2.2.min.js" />
+    <Content Include="Template\Admin\jucheap\js\vector-map\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="Template\Admin\jucheap\js\vector-map\jqvmap\data\jquery.vmap.sampledata.js" />
+    <Content Include="Template\Admin\jucheap\js\vector-map\jqvmap\jquery.vmap.js" />
+    <Content Include="Template\Admin\jucheap\js\vector-map\jqvmap\jqvmap.css" />
+    <Content Include="Template\Admin\jucheap\js\vector-map\jqvmap\maps\continents\jquery.vmap.asia.js" />
+    <Content Include="Template\Admin\jucheap\js\vector-map\jqvmap\maps\continents\jquery.vmap.australia.js" />
+    <Content Include="Template\Admin\jucheap\js\vector-map\jqvmap\maps\continents\jquery.vmap.europe.js" />
+    <Content Include="Template\Admin\jucheap\js\vector-map\jqvmap\maps\jquery.vmap.world.js" />
+    <Content Include="Template\Admin\jucheap\js\vmap-init.js" />
+    <Content Include="Template\Admin\jucheap\js\wizard-init.js" />
+    <Content Include="Template\Admin\jucheap\swf\copy_csv_xls.swf" />
+    <Content Include="Template\Admin\jucheap\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="Template\front\adm.css" />
+    <Content Include="Template\front\onepage.css" />
+    <Content Include="Template\front\web\css\animate.min.css" />
+    <Content Include="Template\front\web\css\bootstrap.min.css" />
+    <Content Include="Template\front\web\css\font-awesome.css" />
+    <Content Include="Template\front\web\css\font-awesome.min.css" />
+    <Content Include="Template\front\web\css\main.css" />
+    <Content Include="Template\front\web\css\prettyPhoto.css" />
+    <Content Include="Template\front\web\css\responsive.css" />
+    <Content Include="Template\front\web\fonts\fontawesome-webfont.svg" />
+    <Content Include="Template\front\web\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Template\front\web\images\accordion1.png" />
+    <Content Include="Template\front\web\images\contact.png" />
+    <Content Include="Template\front\web\images\ico\apple-touch-icon-114-precomposed.png" />
+    <Content Include="Template\front\web\images\ico\apple-touch-icon-144-precomposed.png" />
+    <Content Include="Template\front\web\images\ico\apple-touch-icon-57-precomposed.png" />
+    <Content Include="Template\front\web\images\ico\apple-touch-icon-72-precomposed.png" />
+    <Content Include="Template\front\web\images\ico\favicon.ico" />
+    <Content Include="Template\front\web\images\image_bg.png" />
+    <Content Include="Template\front\web\images\logo.png" />
+    <Content Include="Template\front\web\images\portfolio\full\item1.png" />
+    <Content Include="Template\front\web\images\portfolio\full\item10.png" />
+    <Content Include="Template\front\web\images\portfolio\full\item11.png" />
+    <Content Include="Template\front\web\images\portfolio\full\item12.png" />
+    <Content Include="Template\front\web\images\portfolio\full\item2.png" />
+    <Content Include="Template\front\web\images\portfolio\full\item3.png" />
+    <Content Include="Template\front\web\images\portfolio\full\item4.png" />
+    <Content Include="Template\front\web\images\portfolio\full\item5.png" />
+    <Content Include="Template\front\web\images\portfolio\full\item6.png" />
+    <Content Include="Template\front\web\images\portfolio\full\item7.png" />
+    <Content Include="Template\front\web\images\portfolio\full\item8.png" />
+    <Content Include="Template\front\web\images\portfolio\full\item9.png" />
+    <Content Include="Template\front\web\images\portfolio\recent\item1.png" />
+    <Content Include="Template\front\web\images\portfolio\recent\item10.png" />
+    <Content Include="Template\front\web\images\portfolio\recent\item11.png" />
+    <Content Include="Template\front\web\images\portfolio\recent\item12.png" />
+    <Content Include="Template\front\web\images\portfolio\recent\item2.png" />
+    <Content Include="Template\front\web\images\portfolio\recent\item3.png" />
+    <Content Include="Template\front\web\images\portfolio\recent\item4.png" />
+    <Content Include="Template\front\web\images\portfolio\recent\item5.png" />
+    <Content Include="Template\front\web\images\portfolio\recent\item6.png" />
+    <Content Include="Template\front\web\images\portfolio\recent\item7.png" />
+    <Content Include="Template\front\web\images\portfolio\recent\item8.png" />
+    <Content Include="Template\front\web\images\portfolio\recent\item9.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\dark_rounded\btnNext.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\dark_rounded\btnPrevious.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\dark_rounded\contentPattern.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\dark_rounded\default_thumbnail.gif" />
+    <Content Include="Template\front\web\images\prettyPhoto\dark_rounded\loader.gif" />
+    <Content Include="Template\front\web\images\prettyPhoto\dark_rounded\sprite.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\dark_square\btnNext.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\dark_square\btnPrevious.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\dark_square\contentPattern.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\dark_square\default_thumbnail.gif" />
+    <Content Include="Template\front\web\images\prettyPhoto\dark_square\loader.gif" />
+    <Content Include="Template\front\web\images\prettyPhoto\dark_square\sprite.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\default\default_thumb.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\default\loader.gif" />
+    <Content Include="Template\front\web\images\prettyPhoto\default\sprite.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\default\sprite_next.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\default\sprite_prev.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\default\sprite_x.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\default\sprite_y.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\facebook\btnNext.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\facebook\btnPrevious.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\facebook\contentPatternBottom.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\facebook\contentPatternLeft.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\facebook\contentPatternRight.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\facebook\contentPatternTop.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\facebook\default_thumbnail.gif" />
+    <Content Include="Template\front\web\images\prettyPhoto\facebook\loader.gif" />
+    <Content Include="Template\front\web\images\prettyPhoto\facebook\sprite.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\light_rounded\btnNext.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\light_rounded\btnPrevious.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\light_rounded\default_thumbnail.gif" />
+    <Content Include="Template\front\web\images\prettyPhoto\light_rounded\loader.gif" />
+    <Content Include="Template\front\web\images\prettyPhoto\light_rounded\sprite.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\light_square\btnNext.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\light_square\btnPrevious.png" />
+    <Content Include="Template\front\web\images\prettyPhoto\light_square\default_thumbnail.gif" />
+    <Content Include="Template\front\web\images\prettyPhoto\light_square\loader.gif" />
+    <Content Include="Template\front\web\images\prettyPhoto\light_square\sprite.png" />
+    <Content Include="Template\front\web\images\slider\bg1.jpg" />
+    <Content Include="Template\front\web\images\slider\bg2.jpg" />
+    <Content Include="Template\front\web\images\slider\bg3.jpg" />
+    <Content Include="Template\front\web\images\slider\img3.png" />
+    <Content Include="Template\front\web\js\bootstrap.min.js" />
+    <Content Include="Template\front\web\js\html5shiv.js" />
+    <Content Include="Template\front\web\js\jquery.isotope.min.js" />
+    <Content Include="Template\front\web\js\jquery.js" />
+    <Content Include="Template\front\web\js\jquery.prettyPhoto.js" />
+    <Content Include="Template\front\web\js\main.js" />
+    <Content Include="Template\front\web\js\respond.min.js" />
+    <Content Include="Template\front\web\js\wow.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Code\ECMAScriptPacker.cs" />
+    <Compile Include="App_Code\IocInitializeConstructor.cs" />
+    <Compile Include="App_Code\IocInitializeProperties.cs" />
+    <Compile Include="App_Code\JuCheapScriptBundle.cs" />
+    <Compile Include="App_Code\ParseMaster.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Areas\Adm\AdmAreaRegistration.cs" />
+    <Compile Include="Areas\Adm\Controllers\AdmBaseController.cs" />
+    <Compile Include="Areas\Adm\Controllers\ControlController.cs" />
+    <Compile Include="Areas\Adm\Controllers\DemoController.cs" />
+    <Compile Include="Areas\Adm\Controllers\EmailController.cs" />
+    <Compile Include="Areas\Adm\Controllers\LoginlogController.cs" />
+    <Compile Include="Areas\Adm\Controllers\MenuController.cs" />
+    <Compile Include="Areas\Adm\Controllers\PageViewController.cs" />
+    <Compile Include="Areas\Adm\Controllers\RoleController.cs" />
+    <Compile Include="Areas\Adm\Controllers\UserController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Filter\AuthFilter.cs" />
+    <Compile Include="Filter\CommonExceptionFilter.cs" />
+    <Compile Include="App_Code\JavascriptObfuscator.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="Jobs\EmailJob.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Jobs\EmailJobScheduler.cs" />
+    <Compile Include="Models\AuthMenuDto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\Adm\Views\web.config" />
+    <Content Include="Areas\Adm\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Adm\Views\Control\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\User\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\Shared\_Layout_Body.cshtml" />
+    <Content Include="Areas\Adm\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\User\Login.cshtml" />
+    <Content Include="Areas\Adm\Views\User\Add.cshtml" />
+    <Content Include="Areas\Adm\Views\User\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\Menu\Add.cshtml" />
+    <Content Include="Areas\Adm\Views\Menu\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\Role\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\Role\Add.cshtml" />
+    <Content Include="Areas\Adm\Views\Role\Edit.cshtml" />
+    <Content Include="Areas\Adm\Views\User\ForgotPwd.cshtml" />
+    <Content Include="Areas\Adm\Views\User\Reg.cshtml" />
+    <Content Include="Config\log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\Adm\Views\Control\Welcome.cshtml" />
+    <Content Include="Areas\Adm\Views\Menu\Index - 复制.cshtml" />
+    <Content Include="Areas\Adm\Views\User\Authen.cshtml" />
+    <Content Include="Areas\Adm\Views\Role\AuthMenus.cshtml" />
+    <Content Include="Config\AliPay.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\Email.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\Adm\Views\Loginlog\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\PageView\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\Email\Index.cshtml" />
+    <Content Include="Areas\Adm\Views\Email\Add.cshtml" />
+    <Content Include="Areas\Adm\Views\Demo\Base.cshtml" />
+    <Content Include="Areas\Adm\Views\Demo\Fontawosome.cshtml" />
+    <Content Include="Areas\Adm\Views\Demo\Form.cshtml" />
+    <Content Include="Areas\Adm\Views\Demo\Advance.cshtml" />
+    <Content Include="Areas\Adm\Views\Demo\Gallery.cshtml" />
+    <Content Include="Areas\Adm\Views\Demo\Profile.cshtml" />
+    <Content Include="Areas\Adm\Views\Demo\InBox.cshtml" />
+    <Content Include="Areas\Adm\Views\Demo\InBoxDetail.cshtml" />
+    <Content Include="Areas\Adm\Views\Demo\InBoxCompose.cshtml" />
+    <Content Include="Areas\Adm\Views\Demo\Editor.cshtml" />
+    <Content Include="Areas\Adm\Views\Demo\FormValidate.cshtml" />
+    <Content Include="Areas\Adm\Views\Demo\Chart.cshtml" />
+    <Content Include="Areas\Adm\Views\Demo\ChartMorris.cshtml" />
+    <Content Include="Areas\Adm\Views\Demo\ChartJs.cshtml" />
+    <Content Include="Areas\Adm\Views\Demo\DataTable.cshtml" />
+    <Content Include="Areas\Adm\Views\Demo\DataTableAdv.cshtml" />
+    <Content Include="Config\ReadDatabase.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\Adm\Views\Shared\BaiduTongji.cshtml" />
+    <None Include="job_scheduling_data_2_0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Template\Admin\jucheap\fonts\fontawesome-webfont.eot" />
+    <Content Include="Template\Admin\jucheap\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Template\Admin\jucheap\fonts\fontawesome-webfont.woff" />
+    <Content Include="Template\Admin\jucheap\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\FontAwesome.otf" />
+    <Content Include="Template\Admin\jucheap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Template\Admin\jucheap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Template\Admin\jucheap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Template\Admin\jucheap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\icomoon.eot" />
+    <Content Include="Template\Admin\jucheap\fonts\Simple-Line-Icons.eot" />
+    <Content Include="Template\Admin\jucheap\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="Template\Admin\jucheap\fonts\Simple-Line-Icons.woff" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Template\Admin\jucheap\js\jucheap.login.valid.js" />
+    <Content Include="Template\front\web\fonts\fontawesome-webfont.eot" />
+    <Content Include="Template\front\web\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Template\front\web\fonts\fontawesome-webfont.woff" />
+    <Content Include="Template\front\web\fonts\FontAwesome.otf" />
+    <Content Include="Template\front\web\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Template\front\web\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Template\front\web\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Template\front\web\images\404.xcf" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\publish.pubxml" />
+    <Content Include="Template\Admin\jucheap\fonts\brdGGFwqYJxjg2CD1E9o7g.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\fpTVHK8qsXbIeTHTrnQH6CibMF1hxOLo1b4zdIEBvuw.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\fpTVHK8qsXbIeTHTrnQH6CzM2XYAq8cDhaXsrN8WXcA.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\fpTVHK8qsXbIeTHTrnQH6Dx8cL9zsYYyxVMwatU85cQ.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\fpTVHK8qsXbIeTHTrnQH6E78GtRp3lhchupCJNw8t58.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\fpTVHK8qsXbIeTHTrnQH6GLvoADUPo08d8_TfMCzMpg.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\fpTVHK8qsXbIeTHTrnQH6GQKuzMuncr0JB710wa2dPI.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\fpTVHK8qsXbIeTHTrnQH6H1Ah8-D2WXjE_RNgU-I6-c.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\fpTVHK8qsXbIeTHTrnQH6J-EY3txTwhUdSs_eHhDaJM.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\fpTVHK8qsXbIeTHTrnQH6Kixy-5gtMP3-zP8S1pobIg.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\fpTVHK8qsXbIeTHTrnQH6Kr3NmSntz3GE6rIpxOPZGY.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\fpTVHK8qsXbIeTHTrnQH6Lpx497t94oDua8KfAL9f-E.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\fpTVHK8qsXbIeTHTrnQH6MAjkyiewWYrWZc50I8hK7I.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\fpTVHK8qsXbIeTHTrnQH6Nnl6YROR5rHLkdLoHwoOWA.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\fpTVHK8qsXbIeTHTrnQH6OXKTZYPNtG1yMB_YJSqlic.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\fpTVHK8qsXbIeTHTrnQH6PCsapai9JN_dpv7KtlunNg.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\M2Jd71oPJhLKp0zdtTvoM40tgx99jmYGv_xzYuwd1rU.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\M2Jd71oPJhLKp0zdtTvoM7YHq4FgHI02B8rPccK0FJQ.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\M2Jd71oPJhLKp0zdtTvoMxgy2Fsj5sj3EzlXpqVXRKo.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\ODelI1aHBYDBqgeIAH2zlC2Q8seG17bfDXYR_jUsrzg.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\ODelI1aHBYDBqgeIAH2zlNOAHFN6BivSraYkjhveRHY.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\ODelI1aHBYDBqgeIAH2zlNV_2ngZ8dMf8fLgjYEouxg.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\toadOcfmlt9b38dHJxOBGAIasgMoEcVHo3r268QTaWo.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\toadOcfmlt9b38dHJxOBGClYwVOhDRq2vbpGRTZ7bbs.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\toadOcfmlt9b38dHJxOBGCOFnW3Jk0f09zW_Yln67Ac.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\toadOcfmlt9b38dHJxOBGCVh0V6fR69OLaFLklYbiSk.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\toadOcfmlt9b38dHJxOBGDovqjS_dXPZszO_XltPdNg.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\toadOcfmlt9b38dHJxOBGDRVvBvQIc1z78c__uoBcyI.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\toadOcfmlt9b38dHJxOBGD_j0nMiB9fPhg_k1wdK2h0.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\toadOcfmlt9b38dHJxOBGEfh7q1GW6w7vv_rRnRqMrY.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\toadOcfmlt9b38dHJxOBGEo0As1BFRXtCDhS66znb_k.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\toadOcfmlt9b38dHJxOBGFKFh1TDTPrUZWzVp6FtpG8.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\toadOcfmlt9b38dHJxOBGFxe-GPfKKFmiXaJ_Q0GFr8.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\toadOcfmlt9b38dHJxOBGHZhYM0_6AejPZE-OqA592o.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\toadOcfmlt9b38dHJxOBGJCDkYQxybH_Rl7Qv7ee2N4.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\toadOcfmlt9b38dHJxOBGLpVETArfVi9McBbsQ4atuQ.woff2" />
+    <Content Include="Template\Admin\jucheap\fonts\toadOcfmlt9b38dHJxOBGOode0-EuMkY--TSyExeINg.woff2" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Adm\Models\" />
+    <Folder Include="LogFile\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JuCheap.Core\JuCheap.Core.csproj">
+      <Project>{55aa4b79-e6e7-4444-95d1-d67354a36ebb}</Project>
+      <Name>JuCheap.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JuCheap.Service\JuCheap.Service.csproj">
+      <Project>{f6160cd1-d241-4293-92f5-451749c7fc3a}</Project>
+      <Name>JuCheap.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>37542</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:37297/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>此项目引用这台计算机上缺少的 NuGet 程序包。使用 NuGet 程序包还原可下载这些程序包。有关详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

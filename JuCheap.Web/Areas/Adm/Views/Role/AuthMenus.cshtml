@@ -1,0 +1,227 @@
+﻿@using System.Text
+@using JuCheap.Service.Dto
+@using JuCheap.Service.Enum
+
+@{
+    ViewBag.Title = "角色菜单授权";
+    Layout = "/Areas/Adm/Views/Shared/_Layout_Body.cshtml";
+    List<MenuDto> menus = ViewBag.Menus;
+}
+
+
+@{
+    Layout = "/Areas/Adm/Views/Shared/_Layout_Body.cshtml";
+}
+@section StylesBefore{
+    @Styles.Render("~/Template/Admin/jucheap/Css/DataTable", "~/Template/Admin/jucheap/Css/Nestable")
+}
+@section Scripts{
+    @Scripts.Render("~/JS/Admin/jucheap/DataTable", "~/Template/Admin/jucheap/js/nestable/jquery.nestable.js")
+
+    <script>
+        var grid = null;
+
+        function reload() {
+            $("#go_search").trigger("click");
+        }
+
+        function getDatas() {
+            var data = { RoleIds: [], MenuIds: [] };
+            var row = grid.getSelectedRow(); //只取最后一条选中的数据
+            data.RoleIds.push(row.Id);
+            $("#menuList input:checked").each(function() {
+                data.MenuIds.push($(this).val());
+            });
+            return data;
+        }
+
+        function saveData(e) {
+            var url = '@Url.Action("AuthMenus", ViewContext.RouteData.Values)';
+            var rows = getDatas();
+            var actionName = "保存";
+
+            if (rows != null) {
+                var btn = $(e);
+                btn.button("loading");
+                $.ajax({
+                    url: url,
+                    type: 'post',
+                    data: JSON.stringify(rows),
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    success: function(res) {
+                        btn.button("reset");
+                        if (res.flag) {
+                            parent.layer.alert(actionName + "成功");
+                        } else {
+                            parent.layer.alert(actionName + "失败:" + res.msg);
+                        }
+                    }
+                });
+            } else {
+                parent.layer.alert("请选择要" + actionName + "的角色");
+            }
+        }
+
+        function rowClick() {
+            var target = $("#menuList");
+            target.find("input[type='checkbox']").each(function () {
+                $(this).prop("checked", false);
+            });
+            var row = grid.getSelectedRow(); //只取最后一条选中的数据
+            if (row != null) {
+                var loading = parent.layer.load(2);
+                
+                $.ajax({
+                    url: '@Url.Action("GetRoleMenusByRoleId", @ViewContext.RouteData.Values)/' + row.Id,
+                    type: 'post',
+                    data: null,
+                    dataType: 'json',
+                    success: function(res) {
+                        parent.layer.close(loading);
+                        if (res.flag) {
+                            $(res.data).each(function(index, data) {
+                                target.find("input[type='checkbox'][value='" + data.MenuId + "']").prop("checked", true);
+                            });
+                        } else {
+                            parent.layer.alert("加载失败");
+                        }
+                    }
+                });
+            }
+        }
+
+        $(function() {
+            var cols = [
+                { data: "Id", name: "Id", orderable: false },
+                { data: "Name", name: "Name", orderable: true }
+            ];
+            var config = {
+                id: "table_server",
+                url: "@Url.Action("GetList", "Role", @ViewContext.RouteData.Values)",
+                columns: cols,
+                order: [[1, "desc"]],
+                rowClick: rowClick
+            };
+            grid = new jucheap.grid(config);
+            grid.load();
+
+            $(".box-refresh").click(function() {
+                grid.reload();
+            });
+        });
+    </script>
+}
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="hidden" id="hidden_filter">
+            @* 把需要搜索的条件放到hidden里面，在table格式化完成的时候直接调用$.html()赋值，免去了在js拼接标签的麻烦 *@
+            <div class="row" style="margin-right:0;">
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <label class="sr-only" for="keywords">关键字</label>
+                        <input type="text" class="form-control" id="keywords" name="keywords" placeholder="角色名称" maxlength="20" />
+                    </div>
+                    <button type="button" class="btn btn-success" name="go_search">搜索</button>
+                </form>
+            </div>
+        </div>
+        <section class="panel">
+            <header class="panel-heading" style="margin-bottom: 10px;">
+                角色列表
+                <span class="tools pull-right">
+                    <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
+                    <a class="t-close fa fa-times" href="javascript:;"></a>
+                </span>
+            </header>
+            <table id="table_server" class="table responsive-data-table data-table table-hover">
+                <thead>
+                    <tr>
+                        <th style="width: 40px;">
+                            选择
+                        </th>
+                        <th>
+                            角色名称
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </section>
+    </div>
+
+    <div class="col-md-1 text-center">
+        <p>
+            <button class="btn btn-primary" onclick="saveData(this)"> 保存 </button>
+        </p>
+    </div>
+
+    <div class="col-md-6">
+        <section class="panel">
+            <header class="panel-heading" style="margin-bottom: 10px;">
+                菜单列表
+                <span class="tools pull-right">
+                    <a class="fa fa-repeat box-refresh" href="javascript:;"></a>
+                    <a class="t-close fa fa-times" href="javascript:;"></a>
+                </span>
+            </header>
+            <div class="panel-body">
+                <div class="dd" id="menuList">
+                    @if (menus != null & menus.Any())
+                    {
+                        var moudles = menus.Where(item => item.Type == MenuType.模块);
+                        StringBuilder sb = new StringBuilder();
+                        sb.Append("<ol class=\"dd-list\">");
+                        foreach (var m in moudles)
+                        {
+                            sb.AppendFormat("<li class=\"dd-item\" data-id=\"{0}\">", m.Id);
+                            sb.Append("<div class=\"dd-handle\">");
+                            sb.Append("<label class=\"checkbox-custom inline check-success\" style=\"margin:0 \">");
+                            sb.AppendFormat("<input type=\"checkbox\" id=\"menuChb{1}\" value=\"{1}\"/><label for=\"menuChb{1}\" style=\"margin: 3px 0 0 0\">{0}</label>", m.Name, m.Id);
+                            sb.Append("</label>");
+                            sb.Append("</div>");
+
+                            var menuList = menus.Where(item => item.ParentId == m.Id);
+                            sb.Append("<ol class=\"dd-list\">");
+                            foreach (var menu in menuList)
+                            {
+                                sb.AppendFormat("<li class=\"dd-item\" data-id=\"{0}\">", menu.Id);
+                                sb.Append("<div class=\"dd-handle\">");
+                                sb.Append("<label class=\"checkbox-custom inline check-success\" style=\"margin:0 \">");
+                                sb.AppendFormat("<input type=\"checkbox\" id=\"menuChb{1}\" value=\"{1}\"/><label for=\"menuChb{1}\" style=\"margin: 3px 0 0 0\">{0}</label>", menu.Name, menu.Id);
+                                sb.Append("</label>");
+                                sb.Append("</div>");
+
+                                var btns = menus.Where(item => item.ParentId == menu.Id);
+                                sb.Append("<ol class=\"dd-list\">");
+                                foreach (var btn in btns)
+                                {
+                                    sb.AppendFormat("<li class=\"dd-item\" data-id=\"{0}\">", btn.Id);
+                                    sb.Append("<div class=\"dd-handle\">");
+                                    sb.Append("<label class=\"checkbox-custom inline check-success\" style=\"margin:0 \">");
+                                    sb.AppendFormat("<input type=\"checkbox\" id=\"menuChb{1}\" value=\"{1}\"/><label for=\"menuChb{1}\" style=\"margin: 3px 0 0 0\">{0}</label>", btn.Name, btn.Id);
+                                    sb.Append("</label>");
+                                    sb.Append("</div>");
+                                    sb.Append("</li>");
+                                }
+                                sb.Append("</ol>");
+                                sb.Append("</li>");
+                            }
+                            sb.Append("</ol>");
+
+                            sb.Append("</li>");
+                        }
+                        sb.Append("</ol>");
+
+
+                        @(new MvcHtmlString(sb.ToString()))
+                        
+                    }
+                </div>
+            </div>
+        </section>
+    </div>
+    
+</div>
+
+

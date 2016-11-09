@@ -1,0 +1,162 @@
+﻿@{
+    Layout = "/Areas/Adm/Views/Shared/_Layout_Body.cshtml";
+}
+
+@section StylesBefore
+{
+    @Styles.Render("~/Template/Admin/jucheap/Css/Email")
+}
+
+@section Scripts
+{
+    @Scripts.Render("~/JS/Admin/jucheap/Email")
+    <script>
+        jQuery(document).ready(function(){
+            $('.wysihtml5').wysihtml5();
+        });
+    </script>
+}
+
+<!--body wrapper start-->
+<div class="wrapper no-pad">
+
+    <!--mail inbox start-->
+    <div class="mail-box">
+        <aside class="sm-side">
+            <div class="m-title">
+                <h3>Inbox</h3>
+                <span>14 unread mail</span>
+            </div>
+            <div class="inbox-body">
+                <a class="btn btn-compose" href="@Url.Action("InBoxCompose")">
+                    Compose
+                </a>
+            </div>
+            <ul class="inbox-nav inbox-divider">
+                <li class="active">
+                    <a href="@Url.Action("InBox")#"><i class="fa fa-inbox"></i> Inbox <span class="label label-danger pull-right">2</span></a>
+                </li>
+                <li>
+                    <a href="@Url.Action("InBoxCompose")#"><i class="fa fa-envelope"></i> Sent Mail</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("InBoxCompose")#"><i class="fa fa-briefcase"></i> Important</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("InBoxCompose")#"><i class="fa fa-star"></i> Starred </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("InBoxCompose")#"><i class=" fa fa-external-link"></i> Drafts <span class="label label-info pull-right">30</span></a>
+                </li>
+                <li>
+                    <a href="@Url.Action("InBoxCompose")#"><i class=" fa fa-trash"></i> Trash</a>
+                </li>
+            </ul>
+            <ul class="nav nav-pills nav-stacked labels-info inbox-divider">
+                <li> <h4>Labels</h4> </li>
+                <li> <a href="@Url.Action("InBoxCompose")#"> <i class=" fa fa-sign-blank text-danger"></i> Work </a> </li>
+                <li> <a href="@Url.Action("InBoxCompose")#"> <i class=" fa fa-sign-blank text-success"></i> Design </a> </li>
+                <li> <a href="@Url.Action("InBoxCompose")#"> <i class=" fa fa-sign-blank text-info "></i> Family </a>
+                <li> <a href="@Url.Action("InBoxCompose")#"> <i class=" fa fa-sign-blank text-warning "></i> Friends </a>
+                <li>
+                    <a href="@Url.Action("InBoxCompose")#"> <i class=" fa fa-sign-blank text-primary "></i> Office </a>
+                </li>
+            </ul>
+            <ul class="nav nav-pills nav-stacked labels-info inbox-divider ">
+                <li> <h4>Buddy online</h4> </li>
+                <li> <a href="@Url.Action("InBoxCompose")#"> <i class=" fa fa-circle text-success"></i> Jhone Doe <p>I do not think</p></a>  </li>
+                <li> <a href="@Url.Action("InBoxCompose")#"> <i class=" fa fa-circle text-danger"></i> Sumon <p>Busy with coding</p></a> </li>
+                <li> <a href="@Url.Action("InBoxCompose")#"> <i class=" fa fa-circle text-muted "></i> Anjelina Joli <p>I out of control</p></a>
+                <li> <a href="@Url.Action("InBoxCompose")#"> <i class=" fa fa-circle text-muted "></i> Jonathan Smith <p>I am not here</p></a>
+                <li>
+                    <a href="@Url.Action("InBoxCompose")#"> <i class=" fa fa-circle text-muted "></i> Tawseef <p>I do not think</p></a>
+                </li>
+            </ul>
+
+            <div class="inbox-body text-center">
+                <div class="btn-group">
+                    <a href="javascript:;" class="btn btn-default">
+                        <i class="fa fa-power-off"></i>
+                    </a>
+                    <a href="javascript:;" class="btn btn-default">
+                        <i class="fa fa-cog"></i>
+                    </a>
+                </div>
+            </div>
+
+        </aside>
+        <aside class="lg-side">
+            <div class="inbox-head">
+                <div class="mail-option">
+                    <h3 class="pull-left">New Mail</h3>
+                    <div class="btn-group pull-right">
+                        <a class="btn" href="@Url.Action("InBoxCompose")#">
+                            <i class=" fa fa-floppy-o"></i>
+                        </a>
+                        <a class="btn" href="@Url.Action("InBoxCompose")#">
+                            <i class=" fa fa-trash"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="inbox-body">
+                <div class="compose-mail">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="to" class="col-sm-1 control-label">To</label>
+                            <div class="col-sm-11">
+                                <input type="text" tabindex="1" id="to" class="form-control">
+                            </div>
+                            <div class="compose-options">
+                                <a onclick="$(this).hide(); $('#cc').parents('.form-group').removeClass('hidden'); $('#cc').focus();" href="javascript:;">Cc</a>
+                                <a onclick="$(this).hide(); $('#bcc').parents('.form-group').removeClass('hidden'); $('#bcc').focus();" href="javascript:;">Bcc</a>
+                            </div>
+                        </div>
+                        <div class="form-group hidden">
+                            <label for="cc" class="col-sm-1 control-label">Cc</label>
+                            <div class="col-sm-11">
+                                <input type="text" tabindex="2" id="cc" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group hidden">
+                            <label for="bcc" class="col-sm-1 control-label">Bcc</label>
+                            <div class="col-sm-11">
+                                <input type="text" tabindex="2" id="bcc" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject" class="col-sm-1 control-label">Subject</label>
+                            <div class="col-sm-11">
+                                <input type="text" tabindex="1" id="subject" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="compose-editor form-group">
+                            <label for="subject" class="col-sm-1 control-label">Message</label>
+                            <div class="col-sm-11">
+                                <textarea class="wysihtml5 form-control" rows="9"></textarea>
+                            </div>
+
+                            <div class="col-sm-6 col-md-offset-1 m-t-20">
+                                <input id="file-0" class="file" type="file" multiple="true"/>
+                            </div>
+
+                        </div>
+                        <hr />
+
+                    </form>
+                </div>
+                <div class="compose-btn pull-right">
+                    <a class="btn  btn-success" href="@Url.Action("InBoxCompose")"> Send Mail</a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <!--mail inbox end-->
+
+</div>
+<!--body wrapper end-->
+

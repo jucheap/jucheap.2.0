@@ -1,0 +1,612 @@
+﻿@using System.Text
+@using JuCheap.Service.Enum
+@using JuCheap.Service.Dto
+
+@{
+    Layout = null;
+    List<MenuDto> myMenus = ViewBag.MyMenus;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="author" content="dj.wong" />
+    <meta name="keywords" content="JuCheap后台管理模板,C# MVC Bootstrap 后台管理模板" />
+    <meta name="description" content="JuCheap后台管理模板,采用MVC+EF+Bootstrap构建了一套自适应的通用后台管理模板;JuCheap后台管理模板,已经实现了用户管理,菜单管理,权限管理和日志管理功能.JuCheap后台管理模板使用的技术包括:C#,MVC,EF,Jquery,Bootstrap,jqGrid,DDD,AutoMapper等.JuCheap使用到的技术完全开源,适合快速的搭建后台管理框架,支持自定义扩展." />
+
+    <title>@ViewBag.Title - JuCheap后台管理模板</title>
+
+    <!--switchery-->
+    <link href="/Template/Admin/jucheap/Js/switchery/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
+
+    <!--common style-->
+    @Styles.Render("~/Template/Admin/jucheap/Css/BaseStyles")
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="/Images/ico/favicon.ico" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/Images/ico/apple-touch-icon-144-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/Images/ico/apple-touch-icon-114-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/Images/ico/apple-touch-icon-72-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="/Images/ico/apple-touch-icon-57-precomposed.png" />
+    @Html.Partial("BaiduTongji")
+</head>
+<body class="sticky-header" @*style="overflow: hidden" data-canscroll="false"*@>
+
+    <section>
+        <!-- sidebar left start-->
+        <div class="sidebar-left">
+            <!--responsive view logo start-->
+            <div class="logo dark-logo-bg visible-xs-* visible-sm-*">
+                <a href="/">
+                    <span class="brand-name">JuCheap</span>
+                </a>
+            </div>
+            <!--responsive view logo end-->
+
+            <div class="sidebar-left-info">
+                <!-- visible small devices start-->
+                <div class="search-field">  </div>
+                <!-- visible small devices end-->
+                <!--sidebar nav start-->
+                <ul id="jucheapMenu" class="nav nav-pills nav-stacked side-navigation">
+                    <li>
+                        <h3 class="navigation-title">导航菜单</h3>
+                    </li>
+                    <li><a href="http://www.aspxpet.com" target="_blank"><i class="fa fa-home"></i> <span>JuCheap 3.0</span></a></li>
+                    <li><a href="javascript:;" data-url="@Url.Action("Welcome","Control",new { Area = "Adm" })"><i class="fa fa-home"></i> <span>控制面板</span></a></li>
+
+                    @if (myMenus != null && myMenus.Any())
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        var models = myMenus.Where(item => item.Type == MenuType.模块);
+                        foreach (var m in models)
+                        {
+                            var menus = myMenus.Where(item => item.ParentId == m.Id && item.Type == MenuType.菜单);
+                            sb.Append("<li class=\"menu-list\">");
+                            sb.AppendFormat("<a href=\"javascript:;\" data-url=\"{0}/{1}/{2}/0\"><i class=\"fa fa-laptop\"></i> <span>{3}</span></a>", m.Url, m.ParentId, m.Id, m.Name);
+                            if (menus != null && menus.Any())
+                            {
+                                sb.Append("<ul class=\"child-list\">");
+                                foreach (var menu in menus)
+                                {
+                                    sb.AppendFormat("<li><a href=\"javascript:;\" data-url=\"{0}/{1}/{2}/0\"> {3}</a></li>", menu.Url, menu.ParentId, menu.Id, menu.Name);
+                                }
+                                sb.Append("</ul>");
+                            }
+                            sb.Append("</li>");
+                        }
+                        @(new MvcHtmlString(sb.ToString()))
+                    }
+                </ul>
+                <!--sidebar nav end-->
+
+                <!--sidebar widget start-->
+                <div class="sidebar-widget">
+                    <h4>2012 - @DateTime.Now.AddYears(1).Year &copy; by JuCheap.</h4>
+                    <ul class="list-group">
+                        <li>
+                            <span class="label label-danger pull-right">80%</span>
+                            <p>Completed</p>
+                            <div class="progress progress-xs">
+                                <div class="progress-bar progress-bar-danger" style="width: 80%;">
+                                    <span class="sr-only">80%</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!--sidebar widget end-->
+            </div>
+        </div>
+        <!-- sidebar left end-->
+        <!-- body content start-->
+        <div class="body-content">
+
+            <!-- header section start-->
+            <div class="header-section">
+
+                <!--logo and logo icon start-->
+                <div class="logo dark-logo-bg hidden-xs hidden-sm">
+                    <a href="@Url.Action("Welcome","Control")">
+                        <span class="brand-name">JuCheap</span>
+                    </a>
+                </div>
+
+                <div class="icon-logo dark-logo-bg hidden-xs hidden-sm">
+                    <a href="@Url.Action("Welcome","Control")">
+                        <img src="/Template/Admin/jucheap/img/logo-icon.png" alt="" />
+                        <!--<i class="fa fa-maxcdn"></i>-->
+                    </a>
+                </div>
+                <!--logo and logo icon end-->
+                <!--toggle button start-->
+                <a class="toggle-btn"><i class="fa fa-outdent"></i></a>
+                <!--toggle button end-->
+                <!--mega menu start-->
+                <div id="navbar-collapse-1" class="navbar-collapse collapse yamm mega-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- Classic list -->
+                        <li class="dropdown">
+                            <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle">
+                                导航 <b class="fa fa-angle-down"></b>
+                            </a>
+                            <ul class="dropdown-menu wide-full">
+                                <li>
+                                    <!-- Content container to add padding -->
+                                    <div class="yamm-content">
+                                        <div class="row">
+                                            <ul class="col-sm-2 list-unstyled">
+                                                <li>
+                                                    <p class="title">Standard</p>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;"> Slick Mega Navigation </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;"> Built in BS3+</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;"> Full Customizable </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;"> Huge Components </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;"> Tons of widgets </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;"> Fontawesome </a>
+                                                </li>
+                                            </ul>
+                                            <ul class="col-sm-2 list-unstyled">
+                                                <li>
+                                                    <p class="title">Description</p>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <span class="d-title">2015 Mordern Design</span>
+                                                        <span class="d-desk">Description goes here</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <span class="d-title">Amaging Dashboard</span>
+                                                        <span class="d-desk">Build with BS3</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <span class="d-title">3500+ Satisfied Client</span>
+                                                        <span class="d-desk">Max 5 star rating</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <span class="d-title">Easy to Cutomize</span>
+                                                        <span class="d-desk">Very easy to use</span>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                            <ul class="col-sm-2 list-unstyled">
+                                                <li>
+                                                    <p class="title">Iconic</p>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;"><i class="fa fa-anchor text-muted"></i> Anchor Icon </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;"><i class="fa fa-desktop text-muted"></i> Desktop Icon </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;"><i class="fa fa-laptop text-muted"></i> Laptop Icon</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;"><i class="fa fa-automobile text-muted"></i> Automobile Icon </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;"><i class="fa fa-briefcase text-muted"></i> Briefcase Icon</a>
+                                                </li>
+                                            </ul>
+                                            <ul class="col-sm-3 list-unstyled">
+                                                <li>
+                                                    <p class="title">Image + Description</p>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <img class="icon-img" src="/Template/Admin/jucheap/img/mega-menu/mega_icon1.png" alt="" />
+                                                        <span class="icon-desk">
+                                                            <span class="d-title">Full Flat Concept</span>
+                                                            <span class="d-desk">Description goes here</span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <img class="icon-img" src="/Template/Admin/jucheap/img/mega-menu/mega_icon2.png" alt="" />
+                                                        <span class="icon-desk">
+                                                            <span class="d-title">Amaging Dashboard</span>
+                                                            <span class="d-desk">Build with BS3</span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <img class="icon-img" src="/Template/Admin/jucheap/img/mega-menu/mega_icon3.png" alt="" />
+                                                        <span class="icon-desk">
+                                                            <span class="d-title">3500+ Satisfied Client</span>
+                                                            <span class="d-desk">Max 5 star rating</span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;">
+                                                        <img class="icon-img" src="/Template/Admin/jucheap/img/mega-menu/mega_icon4.png" alt="" />
+                                                        <span class="icon-desk">
+                                                            <span class="d-title">Easy to Cutomize</span>
+                                                            <span class="d-desk">Very easy to use</span>
+                                                        </span>
+                                                    </a>
+                                                </li>
+
+                                            </ul>
+                                            <ul class="col-sm-3 list-unstyled custom-nav-img">
+                                                <li>
+                                                    <p class="title">Custom</p>
+                                                </li>
+                                                <li>
+
+                                                    <p class="desk">
+                                                        Ipsum dolor sit amet, consectetur adipisicing elit.
+                                                        Asperiores aut, autem commodi cumque illum pariatur
+                                                        vero. Ad adipisci animi delectus
+                                                    </p>
+                                                </li>
+                                                <li><span class="mega-bg"></span></li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Classic dropdown -->
+                        <li class="dropdown">
+                            <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle">
+                                语言  <b class="fa fa-angle-down"></b>
+                            </a>
+                            <ul role="menu" class="dropdown-menu language-switch">
+                                <li>
+                                    <a tabindex="-1" href="javascript:;"><span> German </span><img src="/Template/Admin/jucheap/img/flags/germany_flag.jpg" alt="" /></a>
+                                </li>
+                                <li>
+                                    <a tabindex="-1" href="javascript:;"><span> Italian </span> <img src="/Template/Admin/jucheap/img/flags/italy_flag.jpg" alt="" /></a>
+                                </li>
+                                <li>
+                                    <a tabindex="-1" href="javascript:;"><span> French </span> <img src="/Template/Admin/jucheap/img/flags/french_flag.jpg" alt="" /></a>
+                                </li>
+                                <li>
+                                    <a tabindex="-1" href="javascript:;"><span> Spanish </span> <img src="/Template/Admin/jucheap/img/flags/spain_flag.jpg" alt="" /></a>
+                                </li>
+                                <li>
+                                    <a tabindex="-1" href="javascript:;"><span> Russian </span> <img src="/Template/Admin/jucheap/img/flags/russia_flag.jpg" alt="" /></a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <!--mega menu end-->
+                <div class="notification-wrap">
+                    <!--left notification start-->
+                    <div class="left-notification">
+                        <ul class="notification-menu">
+                            <!--mail info start-->
+                            <li class="d-none">
+                                <a href="javascript:;" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="badge bg-primary">6</span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-title">
+                                    <div class="title-row">
+                                        <h5 class="title purple">
+                                            You have 6 Unread Mail
+                                        </h5>
+                                        <a href="javascript:;" class="btn-primary btn-view-all">View all</a>
+                                    </div>
+                                    <div class="notification-list mail-list">
+                                        <a href="javascript:;" class="single-mail">
+                                            <span class="icon bg-primary">
+                                                S
+                                            </span>
+                                            <strong>Smith Doe</strong>
+                                            <small> Just Now</small>
+                                            <p>
+                                                <small>Hello smith i have some query about your</small>
+                                            </p>
+                                            <span class="un-read tooltips" data-original-title="Mark as Read" data-toggle="tooltip" data-placement="left">
+                                                <i class="fa fa-circle"></i>
+                                            </span>
+                                        </a>
+                                        <a href="javascript:;" class="single-mail">
+                                            <span class="icon bg-success">
+                                                A
+                                            </span>
+                                            <strong>Anthony Jones </strong>
+                                            <small> 30 Mins Ago</small>
+                                            <p>
+                                                <small>Hello this is an example message</small>
+                                            </p>
+                                            <span class="un-read tooltips" data-original-title="Mark as Read" data-toggle="tooltip" data-placement="left">
+                                                <i class="fa fa-circle"></i>
+                                            </span>
+                                        </a>
+                                        <a href="javascript:;" class="single-mail">
+                                            <span class="icon bg-warning">
+                                                B
+                                            </span> Billy Jones
+                                            <small> 2 Days Ago</small>
+                                            <p>
+                                                <small>jucheap is awesome Dashboard</small>
+                                            </p>
+                                            <span class="read tooltips" data-original-title="Mark as Unread" data-toggle="tooltip" data-placement="left">
+                                                <i class="fa fa-circle-o"></i>
+                                            </span>
+                                        </a>
+                                        <a href="javascript:;" class="single-mail">
+                                            <span class="icon bg-dark">
+                                                J
+                                            </span> John Doe
+                                            <small> 1 Week Ago</small>
+                                            <p>
+                                                <small>Build with Twitter Bootstrap 3</small>
+                                            </p>
+                                            <span class="read tooltips" data-original-title="Mark as Unread" data-toggle="tooltip" data-placement="left">
+                                                <i class="fa fa-circle-o"></i>
+                                            </span>
+                                        </a>
+                                        <a href="javascript:;" class="single-mail">
+                                            <span class="icon bg-danger">
+                                                S
+                                            </span> Smith Doe
+                                            <small> Just Now</small>
+                                            <p>
+                                                <small>No hassle, very easy to use</small>
+                                            </p>
+                                            <span class="read tooltips" data-original-title="Mark as Unread" data-toggle="tooltip" data-placement="left">
+                                                <i class="fa fa-circle-o"></i>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--mail info end-->
+                            <!--task info start-->
+                            <li class="d-none">
+                                <a href="javascript:;" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                                    <i class="fa fa-tasks"></i>
+                                    <span class="badge bg-success">9</span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-title">
+                                    <div class="title-row">
+                                        <h5 class="title green">
+                                            You have 9 task
+                                        </h5>
+                                        <a href="javascript:;" class="btn-success btn-view-all">View all</a>
+                                    </div>
+                                    <div class="notification-list task-list">
+                                        <a href="javascript:;">
+                                            <span class="icon ">
+                                                <i class="fa fa-paw green-color"></i>
+                                            </span>
+                                            <span class="task-info">
+                                                Smith Doe
+                                                <small> Assigned new task 10 min ago</small>
+                                            </span>
+                                        </a>
+                                        <a href="javascript:;">
+                                            <span class="icon ">
+                                                <i class="fa fa-line-chart blue-color"></i>
+                                            </span>
+                                            <span class="task-info">
+                                                Anthony Jones
+                                                <small> Done 60% of his task</small>
+
+                                                <div class="progress progress-striped">
+                                                    <div style="width: 66%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="66" role="progressbar" class="progress-bar progress-bar-info"></div>
+                                                </div>
+
+                                            </span>
+                                        </a>
+                                        <a href="javascript:;">
+                                            <span class="icon ">
+                                                <i class="fa fa-heart purple-color"></i>
+                                            </span>
+                                            <span class="task-info">
+                                                Tawseef
+                                                <small> Like your task 10 min ago</small>
+                                            </span>
+
+                                        </a>
+                                        <a href="javascript:;">
+                                            <span class="icon ">
+                                                <i class="fa fa-check green-color"></i>
+                                            </span>
+                                            <span class="task-info">
+                                                Anjelina Gomez
+                                                <small>completed his task Yesterday</small>
+                                            </span>
+                                        </a>
+                                        <a href="javascript:;">
+                                            <span class="icon ">
+                                                <i class="fa fa-comments-o"></i>
+                                            </span>
+                                            <span class="task-info">
+                                                Franklin Anderson
+                                                <small>commented on your task 3 Days ago</small>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--task info end-->
+                            <!--notification info start-->
+                            <li>
+                                <a href="javascript:;" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
+                                    <i class="fa fa-bell-o"></i>
+                                    <span class="badge bg-warning">4</span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-title ">
+
+                                    <div class="title-row">
+                                        <h5 class="title yellow">
+                                            You have 4 New Notification
+                                        </h5>
+                                        <a href="javascript:;" class="btn-warning btn-view-all">View all</a>
+                                    </div>
+                                    <div class="notification-list-scroll sidebar">
+                                        <div class="notification-list mail-list not-list">
+                                            <a href="javascript:;" class="single-mail">
+                                                <span class="icon bg-primary">
+                                                    <i class="fa fa-envelope-o"></i>
+                                                </span>
+                                                <strong>New User Registration</strong>
+
+                                                <p>
+                                                    <small>Just Now</small>
+                                                </p>
+                                                <span class="un-read tooltips" data-original-title="Mark as Read" data-toggle="tooltip" data-placement="left">
+                                                    <i class="fa fa-circle"></i>
+                                                </span>
+                                            </a>
+                                            <a href="javascript:;" class="single-mail">
+                                                <span class="icon bg-success">
+                                                    <i class="fa fa-comments-o"></i>
+                                                </span>
+                                                <strong> Private message Send</strong>
+
+                                                <p>
+                                                    <small>30 Mins Ago</small>
+                                                </p>
+                                                <span class="un-read tooltips" data-original-title="Mark as Read" data-toggle="tooltip" data-placement="left">
+                                                    <i class="fa fa-circle"></i>
+                                                </span>
+                                            </a>
+                                            <a href="javascript:;" class="single-mail">
+                                                <span class="icon bg-warning">
+                                                    <i class="fa fa-warning"></i>
+                                                </span> Application Error
+                                                <p>
+                                                    <small> 2 Days Ago</small>
+                                                </p>
+                                                <span class="read tooltips" data-original-title="Mark as Unread" data-toggle="tooltip" data-placement="left">
+                                                    <i class="fa fa-circle-o"></i>
+                                                </span>
+                                            </a>
+                                            <a href="javascript:;" class="single-mail">
+                                                <span class="icon bg-dark">
+                                                    <i class="fa fa-database"></i>
+                                                </span> Database Overloaded 24%
+                                                <p>
+                                                    <small>1 Week Ago</small>
+                                                </p>
+                                                <span class="read tooltips" data-original-title="Mark as Unread" data-toggle="tooltip" data-placement="left">
+                                                    <i class="fa fa-circle-o"></i>
+                                                </span>
+                                            </a>
+                                            <a href="javascript:;" class="single-mail">
+                                                <span class="icon bg-danger">
+                                                    <i class="fa fa-warning"></i>
+                                                </span>
+                                                <strong>Server Failed Notification</strong>
+
+                                                <p>
+                                                    <small>10 Days Ago</small>
+                                                </p>
+                                                <span class="un-read tooltips" data-original-title="Mark as Read" data-toggle="tooltip" data-placement="left">
+                                                    <i class="fa fa-circle"></i>
+                                                </span>
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--notification info end-->
+                        </ul>
+                    </div>
+                    <!--left notification end-->
+                    <!--right notification start-->
+                    <div class="right-notification">
+                        <ul class="notification-menu">
+                            <li>
+                                <a href="javascript:;" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    <img src="/Template/Admin/jucheap/img/avatar-mini.jpg" alt="">@HttpContext.Current.User.Identity.Name
+                                    <span class="fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu purple pull-right">
+                                    <li><a href="javascript:;">  资料</a></li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="badge bg-danger pull-right">40%</span>
+                                            <span>设置</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <span class="label bg-info pull-right">new</span>
+                                            帮助
+                                        </a>
+                                    </li>
+                                    <li><a href="@Url.Action("Logout","User")"><i class="fa fa-sign-out pull-right"></i> 注销</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--right notification end-->
+                </div>
+
+            </div>
+            <!-- header section end-->
+            <!-- page head start-->
+            <div class="page-head">
+                <h3 id="txtMenuNameTip">
+                    控制面板
+                </h3>
+                <span class="sub-title" id="txtMenuDescTip">Welcome to JuCheap dashboard</span>
+            </div>
+            <!-- page head end-->
+            <!--body wrapper start-->
+            <div class="wrapper">
+                @RenderBody()
+
+                <iframe id="txtContentBody" style="width:calc(100%); height: calc(100%); border: 0; margin: 0; padding: 0; min-height: 400px;overflow-y:scroll" src="@Url.Action("Welcome","Control",new { moudleId = 0, menuId = 0 , btnId = 0})"></iframe>
+
+            </div>
+            <!--body wrapper end-->
+        </div>
+        <!-- body content end-->
+    </section>
+    @Scripts.Render("~/JS/Admin/jucheap/BaseScripts")
+    @Scripts.Render("~/Template/Admin/jucheap/JS/Layer/BaseLayer")
+    @Scripts.Render("~/JS/Admin/jucheap/JuCheapMenu")
+    <script>
+        //显示loading提示
+        var firstLoading = layer.load(2);
+        window.onload = function() {
+            setInterval(function () { layer.close(firstLoading); }, 1000);
+        }
+    </script>
+</body>
+</html>
