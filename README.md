@@ -1,4 +1,5 @@
- ** **README** ** 
+### **README**
+
  **Description** 
 
 JuCheap V2.0响应式后台管理系统模板,MVC5+EF+Bootstrap搭建了一个通用的后台管理系统的模板，里面使用到的技术包括：MVC,EF,T4模板批量生成,Jquery,jqGrid,Bootstrap,DDD,AutoMapper等
