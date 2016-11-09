@@ -25,15 +25,6 @@ namespace JuCheap.Data
     /// </summary>
     public class SqlCommandInterceptor : DbCommandInterceptor
     {
-        static SqlCommandInterceptor()
-        {
-            
-        }
-        /// <summary>
-        /// lockObj
-        /// </summary>
-        private static readonly object lockObj = new object();
-
         #region Private Methods
         /// <summary>
         /// 处理读库字符串
@@ -42,18 +33,16 @@ namespace JuCheap.Data
         private string GetReadConn()
         {
             var section = ReadDatabaseConfig.Connections;
-            if (section != null && section.Databases != null && section.Databases.Count > 0)
-            {
-                var seed = Guid.NewGuid().GetHashCode();
-                var index = (double)new Random(seed).Next(0, section.Databases.Count);
-                var resultConn = section.Databases[Convert.ToInt32(Math.Floor(index))];
-                return string.Format(ConfigurationManager.AppSettings["readDbConnectioin"]
-                    , resultConn.Datasource
-                    , resultConn.DatabaseName
-                    , resultConn.User
-                    , resultConn.Password);
-            }
-            return string.Empty;
+            if (section == null || section.Databases == null || section.Databases.Count <= 0)
+                return string.Empty;
+            var seed = Guid.NewGuid().GetHashCode();
+            var index = (double)new Random(seed).Next(0, section.Databases.Count);
+            var resultConn = section.Databases[Convert.ToInt32(Math.Floor(index))];
+            return string.Format(ConfigurationManager.AppSettings["readDbConnectioin"]
+                , resultConn.Datasource
+                , resultConn.DatabaseName
+                , resultConn.User
+                , resultConn.Password);
         }
 
         /// <summary>
@@ -66,15 +55,12 @@ namespace JuCheap.Data
             var isWrite = cmdText.Contains("insert");
             var isMerge = cmdText.Contains("migrationhistory");
 
-            if (!isWrite && !isMerge)
-            {
-                if (!string.IsNullOrWhiteSpace(GetReadConn())) //如果配置了读写分离，就去实现
-                {
-                    command.Connection.Close();
-                    command.Connection.ConnectionString = GetReadConn();
-                    command.Connection.Open();
-                }
-            }
+            if (isWrite || isMerge) return;
+            if (string.IsNullOrWhiteSpace(GetReadConn())) return;
+
+            command.Connection.Close();
+            command.Connection.ConnectionString = GetReadConn();
+            command.Connection.Open();
         }
         #endregion
 
