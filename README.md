@@ -12,6 +12,7 @@ JuCheap V2.0响应式后台管理系统模板,MVC5+EF6+Bootstrap3搭建了一个
 4.初始数据放在，JuCheap.Data项目的/Config/Configuration.cs文件里面
 
  **Attentions** 
+
 记得将Web.config文件里Form认证里面的domain改成自己的，要不会登录不了，
 <forms name="AuthenToken" loginUrl="~/Adm/User/Login" timeout="2880" domain="www.jucheap.com" />
 
