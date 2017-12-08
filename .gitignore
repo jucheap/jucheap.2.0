@@ -21,6 +21,8 @@
 bld/
 [Bb]in/
 [Oo]bj/
+[Ll]og/
+[Ll]ogs/
 
 # Visual Studio 2015 cache/options directory
 .vs/
@@ -149,7 +151,7 @@ publish/
 # NuGet Packages
 *.nupkg
 # The packages folder can be ignored because of Package Restore
-**/packages/*
+#**/packages/*
 # except build/, which is used as an MSBuild target.
 !**/packages/build/
 # Uncomment if necessary however generally it will be regenerated when needed
@@ -243,3 +245,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/JuCheap.Web/LogFile
