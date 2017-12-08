@@ -210,6 +210,7 @@ namespace JuCheap.Web.Areas.Adm.Controllers
         public ActionResult Edit(string moudleId, string menuId, string btnId, UserDto dto)
         {
             var old = userService.GetOne(item => item.Id == dto.Id);
+            dto.LoginName = old.LoginName;
             dto.Password = dto.Password.IsBlank() ? old.Password : dto.Password.ToMD5();
             userService.Update(dto);
             return RedirectToAction("Index", RouteData.Values);
