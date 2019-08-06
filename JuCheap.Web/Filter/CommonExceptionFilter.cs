@@ -70,7 +70,10 @@ namespace JuCheap.Web
                 var view = new ViewResult
                 {
                     ViewName = "~/Views/Shared/Error.cshtml",
-                    ViewData = { ["Error"] = errorMsg }
+                    ViewData = new ViewDataDictionary
+                    {
+                        new System.Collections.Generic.KeyValuePair<string, object>("Error", errorMsg)
+                    }
                 };
                 filterContext.Result = view;
             }

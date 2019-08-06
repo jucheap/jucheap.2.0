@@ -264,7 +264,7 @@ namespace JuCheap.Web
         public static void AddDefaultIgnorePatterns(IgnoreList ignoreList)
         {
             if (ignoreList == null)
-                throw new ArgumentNullException(nameof(ignoreList));
+                throw new ArgumentNullException("ignoreList");
 
             ignoreList.Ignore("*.intellisense.js");
             ignoreList.Ignore("*-vsdoc.js");
